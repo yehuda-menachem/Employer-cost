@@ -1,0 +1,20 @@
+{
+  "source": "המוסד לביטוח לאומי — מס בריאות (כולל תוספת חרבות ברזל)",
+  "note": "3.24% עד הסף, 5% מעל הסף",
+  "2025": {
+    "employee": {
+      "lowerThreshold": 7522,
+      "ceiling": 49030,
+      "lowerRate": 0.0324,
+      "upperRate": 0.05
+    }
+  },
+  "2026": {
+    "employee": {
+      "lowerThreshold": 7830,
+      "ceiling": 50770,
+      "lowerRate": 0.0324,
+      "upperRate": 0.05
+    }
+  }
+}

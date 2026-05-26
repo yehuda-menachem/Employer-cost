@@ -1,0 +1,29 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Node
+node_modules/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.idea/
+.vscode/
+.c*e/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Build/temp
+dist/
+build/
+.tmp/

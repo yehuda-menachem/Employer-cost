@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מחשבון שכר ועלות מעביד 2026 | ישראל</title>
+  <meta name="description" content="מחשבון שכר מקצועי לחישוב מס הכנסה, ביטוח לאומי, נקודות זיכוי ועלות מעביד בישראל">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════ HEADER ═════════════════════════════ -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <div class="header-icon">💼</div>
+        <div>
+          <div class="header-title">מחשבון שכר ועלות מעביד</div>
+          <div class="header-sub">מס הכנסה · ביטוח לאומי · פנסיה · עלות מעביד</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span class="badge-year">נתוני 2026</span>
+        <!-- Year selector -->
+        <div class="year-selector" role="group" aria-label="שנת מס">
+          <button class="yr-btn" data-year="2025">2025</button>
+          <button class="yr-btn active" data-year="2026">2026</button>
+        </div>
+        <button id="darkToggle" class="btn-icon" title="מצב כהה/בהיר" aria-label="מצב תצוגה">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════ MAIN ══════════════════════════════ -->
+  <main class="app-main">
+
+    <!-- Step indicator -->
+    <nav class="steps" aria-label="שלבי המחשבון">
+      <div class="step-item active" id="ind-step1">
+        <div class="step-circle">1</div>
+        <div class="step-label">פרטי עובד</div>
+      </div>
+      <div class="step-connector" id="conn-1-2"></div>
+      <div class="step-item" id="ind-step2">
+        <div class="step-circle">2</div>
+        <div class="step-label">נתוני שכר</div>
+      </div>
+      <div class="step-connector" id="conn-2-3"></div>
+      <div class="step-item" id="ind-step3">
+        <div class="step-circle">3</div>
+        <div class="step-label">תוצאות</div>
+      </div>
+    </nav>
+
+    <!-- ══════════════════════ STEP 1 — EMPLOYEE DETAILS ══════════════════════ -->
+    <section id="step1" class="form-section card anim-in">
+
+      <div class="section-header">
+        <h2 class="section-title">פרטי עובד</h2>
+        <p class="section-desc">הזן פרטים רלוונטיים לצורך חישוב נקודות הזיכוי ומס הכנסה</p>
+      </div>
+
+      <div class="form-grid">
+
+        <!-- Residency -->
+        <div class="form-group">
+          <label class="form-label">
+            תושב ישראל
+            <span class="tooltip-wrap">
+              <span class="tooltip-icon">?</span>
+              <span class="tooltip-popup">תושבות ישראלית מקנה נקודות זיכוי בסיסיות. מי שאינו תושב ישראל אינו זכאי לנקודות הבסיסיות.</span>
+            </span>
+          </label>
+          <div class="radio-group" role="group" aria-label="תושב ישראל">
+            <input type="radio" name="isResident" id="res-yes" value="true" checked>
+            <label for="res-yes">כן</label>
+            <input type="radio" name="isResident" id="res-no" value="false">
+            <label for="res-no">לא</label>
+          </div>
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group">
+          <label class="form-label">
+            מין
+            <span class="tooltip-wrap">
+              <span class="tooltip-icon">?</span>
+              <span class="tooltip-popup">נשים זכאיות ל-0.5 נקודת זיכוי נוספת (סה"כ 2.75 במקום 2.25).</span>
+            </span>
+          </label>
+          <div class="radio-group" role="group" aria-label="מין">
+            <input type="radio" name="gender" id="gender-m" value="male" checked>
+            <label for="gender-m">זכר</label>
+            <input type="radio" name="gender" id="gender-f" value="female">
+            <label for="gender-f">נקבה</label>
+          </div>
+        </div>
+
+        <!-- Marital status -->
+        <div class="form-group">
+          <label class="form-label" for="maritalStatus">
+            מצב משפחתי
+            <span class="tooltip-wrap">
+              <span class="tooltip-icon">?</span>
+              <span class="tooltip-popup">הורה יחיד (גרוש/ה, אלמן/ה) זכאי/ת ל-0.5 נקודת זיכוי נוספת.</span>
+            </span>
+          </label>
+          <select id="maritalStatus" class="form-select">
+            <option value="single">רווק/ה</option>
+            <option value="married">נשוי/אה</option>
+            <option value="divorced">גרוש/ה</option>
+            <option value="widowed">אלמן/ה</option>
+          </select>
+        </div>
+
+        <!-- Work percentage -->
+        <div class="form-group">
+          <label class="form-label" for="workPct">
+            אחוז משרה
+            <span class="tooltip-wrap">
+              <span class="tooltip-icon">?</span>
+              <span class="tooltip-popup">אחוז המשרה משפיע על גובה השכר. נקודות הזיכוי ניתנות במלואן גם בחלק משרה.</span>
+            </span>
+          </label>
+          <div class="input-wrap">
+            <input type="number" id="workPct" class="form-input" min="1" max="100" value="100">
+            <span class="suffix">%</span>
+          </div>
+          <span class="field-error" id="err-workPct"></span>
+        </div>
+
+        <!-- Number of children -->
+        <div class="form-group">
+          <label class="form-label" for="childCount">
+            מספר ילדים (עד גיל 17)
+            <span class="tooltip-wrap">
+              <span class="tooltip-icon">?</span>
+              <span class="tooltip-popup">ילדים עד גיל 17 מזכים בנקודות זיכוי. לאחר הזנה תופיע בחירת גיל לכל ילד.</span>
+            </span>
+          </label>
+          <input type="number" id="childCount" class="form-input" min="0" max="15" value="0">
+        </div>
+
+        <!-- Additional credit points -->
+        <div class="form-group">
+          <label class="form-label" for="extraPoints">
+            נקודות זיכוי נוספות
+            <span class="tooltip-wrap">
+              <span class="tooltip-icon">?</span>
+              <span class="tooltip-popup">נקודות זיכוי שאינן מחושבות אוטומטית: נכות, תואר אקדמי, עו"ד/רופא ועוד.</span>
+            </span>
+          </label>
+          <input type="number" id="extraPoints" class="form-input" min="0" max="20" step="0.25" value="0">
+        </div>
+
+      </div><!-- /form-grid -->
+
+      <!-- Children age groups — rendered dynamically -->
+      <div id="childrenSection" class="subsection" style="display:none">
+        <div class="subsection-title">גיל כל ילד</div>
+        <div id="childrenList" class="children-grid"></div>
+      </div>
+
+      <!-- Released soldier -->
+      <div class="form-grid" style="margin-top:20px">
+        <div class="form-group">
+          <label class="form-label">
+            חייל משוחרר
+            <span class="tooltip-wrap">
+              <span class="tooltip-icon">?</span>
+              <span class="tooltip-popup">חיילים משוחררים לאחר שירות סדיר מלא זכאים ל-2 נקודות זיכוי לתקופה של עד 36 חודשים לאחר השחרור.</span>
+            </span>
+          </label>
+          <div class="radio-group" role="group" aria-label="חייל משוחרר">
+            <input type="radio" name="isSoldier" id="sol-no" value="false" checked>
+            <label for="sol-no">לא</label>
+            <input type="radio" name="isSoldier" id="sol-yes" value="true">
+            <label for="sol-yes">כן</label>
+          </div>
+        </div>
+
+        <div class="form-group" id="soldierMonthsGroup" style="display:none">
+          <label class="form-label" for="soldierMonths">חודשים מאז שחרור</label>
+          <input type="number" id="soldierMonths" class="form-input" min="0" max="120" value="6">
+        </div>
+
+        <!-- New immigrant -->
+        <div class="form-group">
+          <label class="form-label">
+            עולה חדש
+            <span class="tooltip-wrap">
+              <span class="tooltip-icon">?</span>
+              <span class="tooltip-popup">עולים חדשים זכאים לנקודות זיכוי בשנות הקליטה הראשונות: 3 נקודות בשנה 1, 2 בשנה 2, ו-1 בשנה 3-4.</span>
+            </span>
+          </label>
+          <div class="radio-group" role="group" aria-label="עולה חדש">
+            <input type="radio" name="isImmigrant" id="imm-no" value="false" checked>
+            <label for="imm-no">לא</label>
+            <input type="radio" name="isImmigrant" id="imm-yes" value="true">
+            <label for="imm-yes">כן</label>
+          </div>
+        </div>
+
+        <div class="form-group" id="immigrantYearsGroup" style="display:none">
+          <label class="form-label" for="yearsInIsrael">שנים בישראל</label>
+          <input type="number" id="yearsInIsrael" class="form-input" min="0" max="20" value="1">
+        </div>
+
+        <!-- Qualifying settlement -->
+        <div class="form-group">
+          <label class="form-label">
+            תושב יישוב מזכה
+            <span class="tooltip-wrap">
+              <span class="tooltip-icon">?</span>
+              <span class="tooltip-popup">תושבי יישובי ספר, עוטף עזה, יהודה ושומרון ואזורים נוספים זכאים ל-0.5 נקודת זיכוי נוספת.</span>
+            </span>
+          </label>
+          <div class="radio-group" role="group" aria-label="יישוב מזכה">
+            <input type="radio" name="isSettlement" id="set-no" value="false" checked>
+            <label for="set-no">לא</label>
+            <input type="radio" name="isSettlement" id="set-yes" value="true">
+            <label for="set-yes">כן</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Credit points live preview -->
+      <div class="card-inner credit-preview" id="creditPreview">
+        <div style="font-size:.85rem;font-weight:700;color:var(--clr-text2);margin-bottom:10px">נקודות זיכוי מחושבות</div>
+        <div class="credit-total-row">
+          <span class="credit-num" id="cpTotal">0</span>
+          <span class="credit-unit">נקודות זיכוי</span>
+          <span class="credit-saving" id="cpSaving">חיסכון: ₪0/חודש</span>
+        </div>
+        <div class="credit-breakdown-list" id="cpBreakdown"></div>
+      </div>
+
+      <div class="form-actions">
+        <button id="step1Next" class="btn btn-primary">המשך לנתוני שכר ←</button>
+      </div>
+
+    </section><!-- /step1 -->
+
+
+    <!-- ══════════════════════ STEP 2 — SALARY DATA ════════════════════════════ -->
+    <section id="step2" class="form-section card hidden">
+
+      <div class="section-header">
+        <h2 class="section-title">נתוני שכר</h2>
+        <p class="section-desc">הזן את רכיבי השכר ואחוזי ההפרשה. החישוב מתעדכן אוטומטית.</p>
+      </div>
+
+      <!-- Calculation mode -->
+      <div class="calc-mode">
+        <button class="calc-mode-btn active" id="modeGrossNet" data-mode="grossToNet">ברוטו ← נטו</button>
+        <button class="calc-mode-btn" id="modeNetGross" data-mode="netToGross">נטו ← ברוטו</button>
+      </div>
+
+      <!-- Main salary input -->
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label class="form-label" for="baseSalary" id="lbl-base">
+            שכר בסיס (ברוטו)
+            <span class="tooltip-wrap">
+              <span class="tooltip-icon">?</span>
+              <span class="tooltip-popup" id="tip-base">שכר בסיס חודשי לפני כל תוספות. במצב נטו→ברוטו הזן כאן את השכר הנטו הרצוי.</span>
+            </span>
+          </label>
+          <div class="input-wrap">
+            <input type="number" id="baseSalary" class="form-input" min="0" step="100" placeholder="0">
+            <span class="suffix">₪</span>
+          </div>
+          <span class="field-error" id="err-salary"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="overtime">
+            שעות נוספות
+            <span class="tooltip-wrap">
+              <span class="tooltip-icon">?</span>
+              <span class="tooltip-popup">תשלום עבור שעות נוספות — חייב במס הכנסה וביטוח לאומי.</span>
+            </span>
+          </label>
+          <div class="input-wrap">
+            <input type="number" id="overtime" class="form-input" min="0" step="50" placeholder="0">
+            <span class="suffix">₪</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="bonus">
+            בונוסים ותוספות
+            <span class="tooltip-wrap">
+              <span class="tooltip-icon">?</span>
+              <span class="tooltip-popup">בונוסים חד-פעמיים ותוספות — חייבים במס. בחישוב חודשי יש לחלק בונוס שנתי ל-12.</span>
+            </span>
+          </label>
+          <div class="input-wrap">
+            <input type="number" id="bonus" class="form-input" min="0" step="50" placeholder="0">
+            <span class="suffix">₪</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="companyCar">
+            שווי רכב צמוד
+            <span class="tooltip-wrap">
+              <span class="tooltip-icon">?</span>
+              <span class="tooltip-popup">שווי הרכב הצמוד מתווסף לשכר לצורכי מס לפי תקנות. הזן את השווי החודשי הקבוע.</span>
+            </span>
+          </label>
+          <div class="input-wrap">
+            <input type="number" id="companyCar" class="form-input" min="0" step="50" placeholder="0">
+            <span class="suffix">₪</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="benefits">
+            שווי הטבות אחרות
+            <span class="tooltip-wrap">
+              <span class="tooltip-icon">?</span>
+              <span class="tooltip-popup">שווי הטבות החייבות במס: ארוחות, טלפון, ביגוד, שי חגים מעל הפטור וכד'.</span>
+            </span>
+          </label>
+          <div class="input-wrap">
+            <input type="number" id="benefits" class="form-input" min="0" step="50" placeholder="0">
+            <span class="suffix">₪</span>
+          </div>
+        </div>
+
+      </div><!-- /form-grid -->
+
+      <!-- Pension & Training Fund -->
+      <div class="subsection">
+        <div class="subsection-title" style="justify-content:space-between;flex-wrap:wrap;gap:10px">
+          <span>פנסיה וקרן השתלמות</span>
+          <button type="button" id="pensionToggle" class="btn-pension-toggle" title="מאפס את כל אחוזי הפנסיה לאפס">
+            <span id="pensionToggleIcon">⏹</span>
+            <span id="pensionToggleLabel">כבה פנסיה וקרן השתלמות</span>
+          </button>
+        </div>
+        <div class="form-grid form-grid-3">
+
+          <div class="form-group">
+            <label class="form-label" for="pensionEmp">
+              פנסיה עובד
+              <span class="tooltip-wrap">
+                <span class="tooltip-icon">?</span>
+                <span class="tooltip-popup">שיעור ניכוי פנסיוני של העובד. המינימום החוקי הוא 6%. עד 7% מוכר כניכוי מהכנסה.</span>
+              </span>
+            </label>
+            <div class="input-wrap">
+              <input type="number" id="pensionEmp" class="form-input" min="0" max="25" step="0.5" value="6">
+              <span class="suffix">%</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="pensionEr">
+              פנסיה מעסיק
+              <span class="tooltip-wrap">
+                <span class="tooltip-icon">?</span>
+                <span class="tooltip-popup">שיעור הפרשת פנסיה של המעסיק. המינימום החוקי הוא 7.5%.</span>
+              </span>
+            </label>
+            <div class="input-wrap">
+              <input type="number" id="pensionEr" class="form-input" min="0" max="25" step="0.5" value="7.5">
+              <span class="suffix">%</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="severance">
+              פיצויים
+              <span class="tooltip-wrap">
+                <span class="tooltip-icon">?</span>
+                <span class="tooltip-popup">הפרשה חודשית לפיצויי פיטורים. 8.33% שווה לחודש שכר לכל שנת עבודה.</span>
+              </span>
+            </label>
+            <div class="input-wrap">
+              <input type="number" id="severance" class="form-input" min="0" max="25" step="0.5" value="8.33">
+              <span class="suffix">%</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="trainEmp">
+              קרן השתלמות עובד
+              <span class="tooltip-wrap">
+                <span class="tooltip-icon">?</span>
+                <span class="tooltip-popup">שיעור ניכוי לקרן השתלמות של העובד. בד"כ 2.5%.</span>
+              </span>
+            </label>
+            <div class="input-wrap">
+              <input type="number" id="trainEmp" class="form-input" min="0" max="10" step="0.5" value="2.5">
+              <span class="suffix">%</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="trainEr">
+              קרן השתלמות מעסיק
+              <span class="tooltip-wrap">
+                <span class="tooltip-icon">?</span>
+                <span class="tooltip-popup">שיעור הפרשת המעסיק לקרן השתלמות. בד"כ 7.5%.</span>
+              </span>
+            </label>
+            <div class="input-wrap">
+              <input type="number" id="trainEr" class="form-input" min="0" max="20" step="0.5" value="7.5">
+              <span class="suffix">%</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Live preview -->
+      <div class="live-preview" id="livePreview" style="display:none">
+        <div class="lp-item">
+          <span class="lp-label">ברוטו</span>
+          <span class="lp-value clr-primary" id="lp-gross">₪0</span>
+        </div>
+        <div class="lp-divider"></div>
+        <div class="lp-item">
+          <span class="lp-label">מס הכנסה</span>
+          <span class="lp-value clr-negative" id="lp-tax">₪0</span>
+        </div>
+        <div class="lp-divider"></div>
+        <div class="lp-item">
+          <span class="lp-label">ניכויים סה"כ</span>
+          <span class="lp-value clr-negative" id="lp-deduct">₪0</span>
+        </div>
+        <div class="lp-divider"></div>
+        <div class="lp-item">
+          <span class="lp-label">נטו לתשלום</span>
+          <span class="lp-value clr-positive" id="lp-net">₪0</span>
+        </div>
+        <div class="lp-divider"></div>
+        <div class="lp-item">
+          <span class="lp-label">עלות מעביד</span>
+          <span class="lp-value clr-highlight" id="lp-employer">₪0</span>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button id="step2Back" class="btn btn-secondary">→ חזרה לפרטי עובד</button>
+        <button id="step2Calc" class="btn btn-primary">הצג תוצאות מלאות ←</button>
+      </div>
+
+    </section><!-- /step2 -->
+
+
+    <!-- ══════════════════════ STEP 3 — RESULTS ════════════════════════════════ -->
+    <section id="step3" class="form-section hidden">
+
+      <div class="results-header">
+        <h2 class="section-title">תוצאות החישוב</h2>
+        <div class="results-actions">
+          <button id="editCalc" class="btn btn-secondary btn-sm">← ערוך</button>
+          <button id="printBtn" class="btn btn-outline btn-sm">🖨 הדפסה</button>
+          <button id="newCalc" class="btn btn-secondary btn-sm">חישוב חדש</button>
+        </div>
+      </div>
+
+      <!-- Coverge warning for netToGross -->
+      <div class="alert alert-info" id="convergenceAlert" style="display:none">
+        ⚡ חישוב ברוטו מנטו: בוצעו <span id="iterCount">0</span> איטרציות. הדיוק: ±1 ₪.
+      </div>
+
+      <!-- 4 key metrics -->
+      <div class="metrics-grid">
+        <div class="metric-card m-gross">
+          <div class="metric-label">שכר ברוטו</div>
+          <div class="metric-value" id="r-gross">₪0</div>
+          <div class="metric-sub" id="r-gross-sub"></div>
+        </div>
+        <div class="metric-card m-net">
+          <div class="metric-label">שכר נטו לתשלום</div>
+          <div class="metric-value" id="r-net">₪0</div>
+          <div class="metric-sub" id="r-net-sub"></div>
+        </div>
+        <div class="metric-card m-employer">
+          <div class="metric-label">עלות כוללת למעסיק</div>
+          <div class="metric-value" id="r-employer">₪0</div>
+          <div class="metric-sub" id="r-employer-sub"></div>
+        </div>
+        <div class="metric-card m-tax">
+          <div class="metric-label">מס הכנסה</div>
+          <div class="metric-value" id="r-tax">₪0</div>
+          <div class="metric-sub" id="r-tax-sub"></div>
+        </div>
+      </div>
+
+      <!-- Breakdown side by side -->
+      <div class="results-split">
+
+        <!-- Employee deductions -->
+        <div class="card">
+          <div class="card-title"><span class="card-title-icon">👤</span> ניכויים מהעובד</div>
+          <div id="emp-breakdown"></div>
+        </div>
+
+        <!-- Employer cost -->
+        <div class="card">
+          <div class="card-title"><span class="card-title-icon">🏢</span> עלות מעביד</div>
+          <div id="er-breakdown"></div>
+        </div>
+
+      </div>
+
+      <!-- Tax detail -->
+      <div class="card">
+        <div class="card-title"><span class="card-title-icon">📊</span> פירוט מס הכנסה ונקודות זיכוי</div>
+
+        <div class="credit-sum-grid">
+          <div class="cs-item">
+            <div class="cs-label">נקודות זיכוי</div>
+            <div class="cs-value" id="d-cp-total">0</div>
+          </div>
+          <div class="cs-item">
+            <div class="cs-label">שווי נקודות (חודשי)</div>
+            <div class="cs-value" id="d-cp-value">₪0</div>
+          </div>
+          <div class="cs-item">
+            <div class="cs-label">מס לפני זיכוי</div>
+            <div class="cs-value" id="d-gross-tax">₪0</div>
+          </div>
+          <div class="cs-item">
+            <div class="cs-label">שיעור מס אפקטיבי</div>
+            <div class="cs-value" id="d-eff-rate">0%</div>
+          </div>
+        </div>
+
+        <div style="overflow-x:auto">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>מדרגה</th>
+                <th>טווח הכנסה</th>
+                <th>שיעור</th>
+                <th>סכום חייב</th>
+                <th>מס</th>
+              </tr>
+            </thead>
+            <tbody id="tax-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Annual summary -->
+      <div class="card">
+        <div class="card-title"><span class="card-title-icon">📅</span> סיכום שנתי מוערך (×12)</div>
+        <div class="annual-grid">
+          <div class="annual-item">
+            <div class="annual-label">ברוטו שנתי</div>
+            <div class="annual-value" id="a-gross">₪0</div>
+          </div>
+          <div class="annual-item">
+            <div class="annual-label">נטו שנתי</div>
+            <div class="annual-value" id="a-net">₪0</div>
+          </div>
+          <div class="annual-item">
+            <div class="annual-label">מס הכנסה שנתי</div>
+            <div class="annual-value" id="a-tax">₪0</div>
+          </div>
+          <div class="annual-item">
+            <div class="annual-label">ביטוח לאומי שנתי</div>
+            <div class="annual-value" id="a-ni">₪0</div>
+          </div>
+          <div class="annual-item">
+            <div class="annual-label">עלות מעסיק שנתית</div>
+            <div class="annual-value" id="a-employer">₪0</div>
+          </div>
+          <div class="annual-item">
+            <div class="annual-label">פנסיה שנתית (עובד)</div>
+            <div class="annual-value" id="a-pension">₪0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NI threshold info -->
+      <div class="ni-threshold-notice" id="niThresholdNotice"></div>
+
+      <!-- Legal notice -->
+      <div class="legal-notice">
+        ⚠️ <strong>הבהרה משפטית:</strong> החישוב מבוסס על נתוני מס לשנת 2025 ומהווה אומדן בלבד. אינו מחשב את הטבות סעיף 45א לפקודה (זיכוי על הפרשות פנסיוניות) ועשוי להיות שונה מחישוב מדויק בגין נסיבות אישיות. לחישוב מחייב יש לפנות לרואה חשבון.
+      </div>
+
+    </section><!-- /step3 -->
+
+  </main>
+
+  <!-- ═══════════════════════════════════ FOOTER ════════════════════════════ -->
+  <footer class="app-footer">
+    <p>מחשבון שכר ועלות מעביד 2025 | מבוסס על נתוני רשות המסים והמוסד לביטוח לאומי | <a href="#" id="clearStorage" style="color:var(--clr-text3);text-decoration:none">מחק נתונים שמורים</a></p>
+  </footer>
+
+  <!-- ═══════════════════════════════════ SCRIPTS ═══════════════════════════ -->
+  <script src="utils/formatters.js"></script>
+  <script src="utils/validators.js"></script>
+  <script src="calculators/credits.js"></script>
+  <script src="calculators/incomeTax.js"></script>
+  <script src="calculators/insurance.js"></script>
+  <script src="calculators/pension.js"></script>
+  <script src="calculators/employerCost.js"></script>
+  <script src="calculators/grossFromNet.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+[
+  {
+    "limit": 7010,
+    "percent": 10.00
+  },
+  {
+    "limit": 10060,
+    "percent": 14.00
+  },
+  {
+    "limit": 16150,
+    "percent": 20.00
+  },
+  {
+    "limit": 22440,
+    "percent": 31.00
+  },
+  {
+    "limit": 46690,
+    "percent": 35.00
+  },
+  {
+    "limit": 60130,
+    "percent": 47.00
+  },
+  {
+    "limit": 99999999,
+    "percent": 50.00
+  }
+]

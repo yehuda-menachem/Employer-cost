@@ -1,0 +1,24 @@
+{
+  "source": "רשות המסים בישראל — נקודות זיכוי",
+  "2025": {
+    "monthlyValue": 242,
+    "annualValue": 2904,
+    "base":        { "male": 2.25, "female": 2.75 },
+    "singleParent":{ "points": 0.5 },
+    "children":    { "under1": 1.5, "age1to5": 2.5, "age6to17": 0.5 },
+    "newImmigrant":{ "year1": 3.0, "year2": 2.0, "year3": 1.0, "year4": 1.0 },
+    "releasedSoldier":       { "points": 2.0, "maxMonths": 36 },
+    "qualifyingSettlement":  { "points": 0.5 }
+  },
+  "2026": {
+    "note": "שווי נקודת זיכוי 2026 — נשאר ₪242 לפי תוכנות שכר עדכניות",
+    "monthlyValue": 242,
+    "annualValue": 2904,
+    "base":        { "male": 2.25, "female": 2.75 },
+    "singleParent":{ "points": 0.5 },
+    "children":    { "under1": 1.5, "age1to5": 2.5, "age6to17": 0.5 },
+    "newImmigrant":{ "year1": 3.0, "year2": 2.0, "year3": 1.0, "year4": 1.0 },
+    "releasedSoldier":       { "points": 2.0, "maxMonths": 36 },
+    "qualifyingSettlement":  { "points": 0.5 }
+  }
+}
