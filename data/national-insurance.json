@@ -1,34 +1,39 @@
 {
-  "source": "המוסד לביטוח לאומי — שיעורי דמי ביטוח כוללים (כולל תוספת חרבות ברזל)",
-  "note": "שיעור המדרגה הנמוכה כולל את כל הרכיבים: זקנה, שאירים, אמהות, נכות, אבטלה, פש\"ר, ותוספת חרבות ברזל",
+  "source": "המוסד לביטוח לאומי — נתונים רשמיים מ-bituah_leumi_parameters.json",
+  "note": "סף=60% משכר ממוצע (₪12,536 × 0.6 = ₪7,521.6). תקרה=מקסימום בל. עובד=1.04%/7%, בריאות=3.23%/5.17%, מעביד≈4.51%/7.6% (גזור מנתוני תוכנת השכר)",
   "2025": {
     "employee": {
+      "minimumBase":    6247.67,
       "lowerThreshold": 7522,
-      "ceiling": 49030,
-      "lowerRate": 0.0104,
-      "upperRate": 0.07,
-      "note": "1.04% עד הסף, 7% מעל הסף"
+      "ceiling":        50695,
+      "lowerRate":      0.0104,
+      "upperRate":      0.07,
+      "note":           "1.04% עד הסף (₪7,522), 7% מעל. סה\"כ עם בריאות: 4.27% / 12.17%"
     },
     "employer": {
+      "minimumBase":    6247.67,
       "lowerThreshold": 7522,
-      "ceiling": 49030,
-      "lowerRate": 0.0451,
-      "upperRate": 0.076,
-      "note": "4.51% עד הסף, 7.6% מעל הסף"
+      "ceiling":        50695,
+      "lowerRate":      0.0451,
+      "upperRate":      0.076,
+      "note":           "4.51% עד הסף (מאומת מול נתוני תוכנת שכר), 7.6% מעל (להשלמת בדיקה)"
     }
   },
   "2026": {
+    "note": "הערכה — אמת מול נתוני 2026 רשמיים",
     "employee": {
+      "minimumBase":    6400,
       "lowerThreshold": 7830,
-      "ceiling": 50770,
-      "lowerRate": 0.0104,
-      "upperRate": 0.07
+      "ceiling":        52000,
+      "lowerRate":      0.0104,
+      "upperRate":      0.07
     },
     "employer": {
+      "minimumBase":    6400,
       "lowerThreshold": 7830,
-      "ceiling": 50770,
-      "lowerRate": 0.0451,
-      "upperRate": 0.076
+      "ceiling":        52000,
+      "lowerRate":      0.0451,
+      "upperRate":      0.076
     }
   }
 }

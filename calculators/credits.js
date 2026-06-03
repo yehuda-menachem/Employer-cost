@@ -23,9 +23,30 @@
         total += p;
       }
 
-      // Base resident points (gender-based)
-      const base = data.gender === 'female' ? cfg.base.female : cfg.base.male;
-      add(data.gender === 'female' ? 'בסיס תושב ישראל (אישה)' : 'בסיס תושב ישראל (גבר)', base);
+      // Base resident points (gender-based) — only granted to Israeli residents
+      if (data.isResident) {
+        const base = data.gender === 'female' ? cfg.base.female : cfg.base.male;
+        add(data.gender === 'female' ? 'בסיס תושב ישראל (אישה)' : 'בסיס תושב ישראל (גבר)', base);
+      } else {
+        // Non-residents lose almost all credit points. Only specific Israeli-source
+        // income credits may apply (rare cases — handled via "additional points" field).
+        breakdown.push({ label: 'לא תושב ישראל — אין נקודות בסיס', points: 0 });
+      }
+
+      // Single parent and child credits also require Israeli residency
+      if (!data.isResident) {
+        // Skip residency-dependent credits entirely
+        const extra = parseFloat(data.additionalPoints) || 0;
+        if (extra > 0) add('נקודות זיכוי נוספות (ידניות)', extra);
+
+        total = Math.round(total * 100) / 100;
+        return {
+          total: total,
+          breakdown: breakdown,
+          monthlyValue: cfg.monthlyValue,
+          monthlyTaxSaving: Math.round(total * cfg.monthlyValue)
+        };
+      }
 
       // Single parent (גרוש/ה, אלמן/ה)
       if (data.isSingleParent) {
@@ -55,10 +76,9 @@
         }
       }
 
-      // Qualifying settlement
-      if (data.isQualifyingSettlement) {
-        add('תושב יישוב מזכה', cfg.qualifyingSettlement.points);
-      }
+      // NOTE: Qualifying settlement (יישוב מזכה) is NOT a credit point.
+      // It is a percentage discount on income tax under Section 11 of the
+      // Income Tax Ordinance, handled separately by QualifyingSettlement.apply().
 
       // Manual additional points
       const extra = parseFloat(data.additionalPoints) || 0;

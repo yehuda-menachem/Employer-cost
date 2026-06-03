@@ -14,7 +14,7 @@
           { upTo: 10060, rate: 0.14, label: 'מדרגה 2' },
           { upTo: 16150, rate: 0.20, label: 'מדרגה 3' },
           { upTo: 22440, rate: 0.31, label: 'מדרגה 4' },
-          { upTo: 46640, rate: 0.35, label: 'מדרגה 5' },
+          { upTo: 46690, rate: 0.35, label: 'מדרגה 5' },
           { upTo: 60130, rate: 0.47, label: 'מדרגה 6' },
           { upTo: null,  rate: 0.50, label: 'מדרגה 7' }
         ]
@@ -25,7 +25,7 @@
           { upTo: 10440, rate: 0.14, label: 'מדרגה 2' },
           { upTo: 16760, rate: 0.20, label: 'מדרגה 3' },
           { upTo: 23290, rate: 0.31, label: 'מדרגה 4' },
-          { upTo: 48430, rate: 0.35, label: 'מדרגה 5' },
+          { upTo: 48490, rate: 0.35, label: 'מדרגה 5' },
           { upTo: 62400, rate: 0.47, label: 'מדרגה 6' },
           { upTo: null,  rate: 0.50, label: 'מדרגה 7' }
         ]
@@ -33,17 +33,17 @@
     },
     nationalInsurance: {
       '2025': {
-        employee: { lowerThreshold: 7522, ceiling: 49030, lowerRate: 0.0104, upperRate: 0.07  },
-        employer: { lowerThreshold: 7522, ceiling: 49030, lowerRate: 0.0451, upperRate: 0.076 }
+        employee: { minimumBase: 6247.67, lowerThreshold: 7522, ceiling: 50695, lowerRate: 0.0104, upperRate: 0.07  },
+        employer: { minimumBase: 6247.67, lowerThreshold: 7522, ceiling: 50695, lowerRate: 0.0451, upperRate: 0.076 }
       },
       '2026': {
-        employee: { lowerThreshold: 7830, ceiling: 50770, lowerRate: 0.0104, upperRate: 0.07  },
-        employer: { lowerThreshold: 7830, ceiling: 50770, lowerRate: 0.0451, upperRate: 0.076 }
+        employee: { minimumBase: 6400,    lowerThreshold: 7830, ceiling: 52000, lowerRate: 0.0104, upperRate: 0.07  },
+        employer: { minimumBase: 6400,    lowerThreshold: 7830, ceiling: 52000, lowerRate: 0.0451, upperRate: 0.076 }
       }
     },
     healthTax: {
-      '2025': { employee: { lowerThreshold: 7522, ceiling: 49030, lowerRate: 0.0324, upperRate: 0.05 } },
-      '2026': { employee: { lowerThreshold: 7830, ceiling: 50770, lowerRate: 0.0324, upperRate: 0.05 } }
+      '2025': { employee: { minimumBase: 6247.67, lowerThreshold: 7522, ceiling: 50695, lowerRate: 0.0323, upperRate: 0.0517 } },
+      '2026': { employee: { minimumBase: 6400,    lowerThreshold: 7830, ceiling: 52000, lowerRate: 0.0323, upperRate: 0.0517 } }
     },
     creditPoints: {
       '2025': {
@@ -63,6 +63,62 @@
         newImmigrant: { year1: 3.0, year2: 2.0, year3: 1.0, year4: 1.0 },
         releasedSoldier: { points: 2.0, maxMonths: 36 },
         qualifyingSettlement: { points: 0.5 }
+      }
+    },
+    qualifyingSettlements: {
+      '2025': [
+        { id: 0,  label: 'ללא הנחת יישוב',                          percent: 0,  monthlyCeiling: 0 },
+        { id: 1,  label: '5% עד ₪14,860 בחודש',                     percent: 5,  monthlyCeiling: 14860 },
+        { id: 2,  label: '7% עד ₪12,220 בחודש',                     percent: 7,  monthlyCeiling: 12220 },
+        { id: 5,  label: '10% עד ₪15,000 בחודש',                    percent: 10, monthlyCeiling: 15000 },
+        { id: 29, label: '12% עד ₪15,500 בחודש',                    percent: 12, monthlyCeiling: 15500 },
+        { id: 6,  label: '12% עד ₪15,550 בחודש',                    percent: 12, monthlyCeiling: 15550 },
+        { id: 8,  label: '12% עד ₪17,770 בחודש',                    percent: 12, monthlyCeiling: 17770 },
+        { id: 10, label: '12% עד ₪18,880 בחודש',                    percent: 12, monthlyCeiling: 18880 },
+        { id: 9,  label: '14% עד ₪18,330 בחודש',                    percent: 14, monthlyCeiling: 18330 },
+        { id: 13, label: '14% עד ₪21,660 בחודש',                    percent: 14, monthlyCeiling: 21660 },
+        { id: 11, label: '16% עד ₪18,880 בחודש',                    percent: 16, monthlyCeiling: 18880 },
+        { id: 12, label: '18% עד ₪20,450 בחודש',                    percent: 18, monthlyCeiling: 20450 },
+        { id: 14, label: '18% עד ₪21,660 בחודש',                    percent: 18, monthlyCeiling: 21660 },
+        { id: 15, label: '20% עד ₪21,660 בחודש',                    percent: 20, monthlyCeiling: 21660 },
+        { id: 16, label: '20% עד ₪22,320 בחודש',                    percent: 20, monthlyCeiling: 22320 },
+        { id: 88, label: 'אילת — 10% עד ₪22,380 (אזור סחר חופשי)',   percent: 10, monthlyCeiling: 22380 },
+        { id: 99, label: 'מיוחד חברי קיבוץ מלכיה — 7% עד ₪16,500',   percent: 7,  monthlyCeiling: 16500 }
+      ],
+      '2026': [
+        { id: 0,  label: 'ללא הנחת יישוב',                          percent: 0,  monthlyCeiling: 0 },
+        { id: 1,  label: '5% עד ₪14,860 בחודש',                     percent: 5,  monthlyCeiling: 14860 },
+        { id: 2,  label: '7% עד ₪12,220 בחודש',                     percent: 7,  monthlyCeiling: 12220 },
+        { id: 5,  label: '10% עד ₪15,000 בחודש',                    percent: 10, monthlyCeiling: 15000 },
+        { id: 29, label: '12% עד ₪15,500 בחודש',                    percent: 12, monthlyCeiling: 15500 },
+        { id: 6,  label: '12% עד ₪15,550 בחודש',                    percent: 12, monthlyCeiling: 15550 },
+        { id: 8,  label: '12% עד ₪17,770 בחודש',                    percent: 12, monthlyCeiling: 17770 },
+        { id: 10, label: '12% עד ₪18,880 בחודש',                    percent: 12, monthlyCeiling: 18880 },
+        { id: 9,  label: '14% עד ₪18,330 בחודש',                    percent: 14, monthlyCeiling: 18330 },
+        { id: 13, label: '14% עד ₪21,660 בחודש',                    percent: 14, monthlyCeiling: 21660 },
+        { id: 11, label: '16% עד ₪18,880 בחודש',                    percent: 16, monthlyCeiling: 18880 },
+        { id: 12, label: '18% עד ₪20,450 בחודש',                    percent: 18, monthlyCeiling: 20450 },
+        { id: 14, label: '18% עד ₪21,660 בחודש',                    percent: 18, monthlyCeiling: 21660 },
+        { id: 15, label: '20% עד ₪21,660 בחודש',                    percent: 20, monthlyCeiling: 21660 },
+        { id: 16, label: '20% עד ₪22,320 בחודש',                    percent: 20, monthlyCeiling: 22320 },
+        { id: 88, label: 'אילת — 10% עד ₪22,380 (אזור סחר חופשי)',   percent: 10, monthlyCeiling: 22380 },
+        { id: 99, label: 'מיוחד חברי קיבוץ מלכיה — 7% עד ₪16,500',   percent: 7,  monthlyCeiling: 16500 }
+      ]
+    },
+    taxParameters: {
+      '2025': {
+        averageWage:          12536,
+        maxRecognizedSavings: 9700,
+        trainingFundCeiling:  15712,
+        pensionCeiling:       33290,
+        severanceCeiling:     13750
+      },
+      '2026': {
+        averageWage:          12536,
+        maxRecognizedSavings: 9700,
+        trainingFundCeiling:  15712,
+        pensionCeiling:       33290,
+        severanceCeiling:     13750
       }
     }
   };
@@ -98,24 +154,37 @@
   // ── Year extraction helper ───────────────────────────────────
   function extractYear(allData, year) {
     const y = year in allData.taxBrackets ? year : '2025';
+    const qs = allData.qualifyingSettlements || FALLBACK.qualifyingSettlements;
+    const tp = allData.taxParameters         || FALLBACK.taxParameters;
     return {
-      taxBrackets:       allData.taxBrackets[y],
-      nationalInsurance: allData.nationalInsurance[y],
-      healthTax:         allData.healthTax[y],
-      creditPoints:      allData.creditPoints[y]
+      taxBrackets:           allData.taxBrackets[y],
+      nationalInsurance:     allData.nationalInsurance[y],
+      healthTax:             allData.healthTax[y],
+      creditPoints:          allData.creditPoints[y],
+      qualifyingSettlements: qs[y] || qs['2025'],
+      taxParameters:         tp[y] || tp['2025']
     };
   }
 
   // ── Data loading ─────────────────────────────────────────────
   async function loadTaxData() {
     try {
-      const [tb, ni, ht, cp] = await Promise.all([
+      const [tb, ni, ht, cp, qs, tp] = await Promise.all([
         fetch('data/tax-brackets.json').then(r => { if (!r.ok) throw new Error(); return r.json(); }),
         fetch('data/national-insurance.json').then(r => { if (!r.ok) throw new Error(); return r.json(); }),
         fetch('data/health-tax.json').then(r => { if (!r.ok) throw new Error(); return r.json(); }),
-        fetch('data/credit-points.json').then(r => { if (!r.ok) throw new Error(); return r.json(); })
+        fetch('data/credit-points.json').then(r => { if (!r.ok) throw new Error(); return r.json(); }),
+        fetch('data/qualifying-settlements.json').then(r => r.ok ? r.json() : null).catch(() => null),
+        fetch('data/tax-parameters.json').then(r => r.ok ? r.json() : null).catch(() => null)
       ]);
-      state.allTaxData = { taxBrackets: tb, nationalInsurance: ni, healthTax: ht, creditPoints: cp };
+      state.allTaxData = {
+        taxBrackets: tb,
+        nationalInsurance: ni,
+        healthTax: ht,
+        creditPoints: cp,
+        qualifyingSettlements: qs || FALLBACK.qualifyingSettlements,
+        taxParameters:         tp || FALLBACK.taxParameters
+      };
     } catch (e) {
       state.usingFallback = true;
       state.allTaxData = FALLBACK;
@@ -138,9 +207,47 @@
     const badge = document.querySelector('.badge-year');
     if (badge) badge.textContent = 'נתוני ' + year;
 
+    populateSettlementDropdown();
     saveToStorage();
     updateCreditPreview();
     triggerLiveUpdate();
+  }
+
+  // ── Populate qualifying-settlement dropdown ──────────────────
+  function populateSettlementDropdown() {
+    const sel = $('settlementSelect');
+    if (!sel || !state.taxData || !state.taxData.qualifyingSettlements) return;
+
+    const previous = sel.value;
+    sel.innerHTML = '';
+    state.taxData.qualifyingSettlements.forEach(function (s) {
+      const opt = document.createElement('option');
+      opt.value = String(s.id);
+      opt.textContent = s.label;
+      sel.appendChild(opt);
+    });
+
+    // Restore prior selection if it still exists in the new year
+    if (previous && [...sel.options].some(o => o.value === previous)) {
+      sel.value = previous;
+    }
+    updateSettlementInfo();
+  }
+
+  // Show inline info text under the dropdown
+  function updateSettlementInfo() {
+    const sel    = $('settlementSelect');
+    const info   = $('settlementInfo');
+    if (!sel || !info || !state.taxData) return;
+    const id = parseInt(sel.value, 10) || 0;
+    const s  = (state.taxData.qualifyingSettlements || []).find(x => x.id === id);
+    if (s && s.percent > 0) {
+      info.style.display = 'block';
+      info.textContent = 'הנחת ' + s.percent + '% מההכנסה החייבת (עד ₪'
+        + SalaryCalc.Fmt.number(s.monthlyCeiling) + ' בחודש) — תנוכה מהמס לאחר נקודות הזיכוי.';
+    } else {
+      info.style.display = 'none';
+    }
   }
 
   // ── Read employee data from step 1 ──────────────────────────
@@ -167,10 +274,19 @@
       monthsSinceDischarge: parseFloat($('soldierMonths')?.value) || 0,
       isNewImmigrant:       document.querySelector('input[name="isImmigrant"]:checked')?.value === 'true',
       yearsInIsrael:        parseFloat($('yearsInIsrael')?.value) || 1,
-      isQualifyingSettlement: document.querySelector('input[name="isSettlement"]:checked')?.value === 'true',
+      settlementId:         parseInt($('settlementSelect')?.value, 10) || 0,
       workPercentage:       parseFloat($('workPct')?.value) || 100,
       additionalPoints:     parseFloat($('extraPoints')?.value) || 0
     };
+  }
+
+  // Find settlement object from the loaded data by id
+  function getSelectedSettlement(empData, taxData) {
+    if (!taxData || !taxData.qualifyingSettlements) return null;
+    if (!empData.settlementId) return null;
+    return taxData.qualifyingSettlements.find(function (s) {
+      return s.id === empData.settlementId;
+    }) || null;
   }
 
   // ── Read salary data from step 2 ────────────────────────────
@@ -190,25 +306,50 @@
     };
   }
 
+  // Calculate training-fund employer contribution excess above tax-exempt ceiling.
+  // For salary above ₪15,712 (monthly), employer contributions above that base
+  // are taxable income for the employee.
+  function trainingFundTaxableExcess(gross, employerTrainRate, taxParams) {
+    const ceiling = (taxParams && taxParams.trainingFundCeiling) || 15712;
+    if (gross <= ceiling) return 0;
+    return Math.round((gross - ceiling) * employerTrainRate);
+  }
+
   // ── Core: compute net from gross ─────────────────────────────
-  function computeNet(gross, credits, salaryData, taxData) {
+  function computeNet(gross, credits, salaryData, taxData, settlement) {
     if (gross <= 0) return 0;
 
-    // Pension deduction from taxable income (max 7% recognised under Section 47)
+    // Section 47 — DEDUCTION from taxable income (up to 7% of gross)
     const deductibleRate  = Math.min(salaryData.pensionEmpRate, 0.07);
     const pensionDeduct   = gross * deductibleRate;
-    const taxableIncome   = Math.max(0, gross - pensionDeduct);
 
+    // Training-fund excess (employer contribution above ceiling becomes taxable income)
+    const trainExcess     = trainingFundTaxableExcess(gross, salaryData.trainErRate, taxData.taxParameters);
+
+    const taxableIncome   = Math.max(0, gross - pensionDeduct + trainExcess);
+
+    // Tax brackets + credit-point deduction
     const taxRes    = SalaryCalc.IncomeTax.calculate(
       taxableIncome, credits.total, taxData.creditPoints.monthlyValue, taxData.taxBrackets.brackets
     );
+
+    // Section 45A — 35% CREDIT on employee pension contribution (up to 5% of recognized income)
+    const pensionAmt = gross * salaryData.pensionEmpRate;
+    const maxRec     = (taxData.taxParameters && taxData.taxParameters.maxRecognizedSavings) || 9700;
+    const sec45a     = SalaryCalc.PensionTaxCredit.calculate(gross, pensionAmt, maxRec);
+    const afterSec45a = Math.max(0, taxRes.netTax - sec45a.credit);
+
+    // Section 11 — qualifying settlement discount
+    const settle    = SalaryCalc.QualifyingSettlement.apply(taxableIncome, afterSec45a, settlement);
+    const finalTax  = settle.finalTax;
+
     const niRes     = SalaryCalc.Insurance.calculateNI(gross, taxData.nationalInsurance);
     const healthRes = SalaryCalc.Insurance.calculateHealth(gross, taxData.healthTax);
 
     const pensionEmp = Math.round(gross * salaryData.pensionEmpRate);
     const trainEmp   = Math.round(gross * salaryData.trainEmpRate);
 
-    return Math.round(gross - taxRes.netTax - niRes.total - healthRes.total - pensionEmp - trainEmp);
+    return Math.round(gross - finalTax - niRes.total - healthRes.total - pensionEmp - trainEmp);
   }
 
   // ── Full calculation engine ──────────────────────────────────
@@ -217,7 +358,8 @@
     const empData  = readEmployeeData();
     const salData  = readSalaryData();
 
-    const credits  = SalaryCalc.Credits.calculate(empData, taxData.creditPoints);
+    const credits   = SalaryCalc.Credits.calculate(empData, taxData.creditPoints);
+    const settlement = getSelectedSettlement(empData, taxData);
 
     let gross, convergenceInfo = null;
 
@@ -227,7 +369,7 @@
       const targetNet = salData.baseSalary;
       const result = SalaryCalc.GrossFromNet.calculate(
         targetNet,
-        function (g) { return computeNet(g, credits, salData, taxData); }
+        function (g) { return computeNet(g, credits, salData, taxData, settlement); }
       );
       gross = result.gross;
       convergenceInfo = result;
@@ -237,11 +379,26 @@
 
     const deductibleRate = Math.min(salData.pensionEmpRate, 0.07);
     const pensionDeduct  = Math.round(gross * deductibleRate);
-    const taxableIncome  = Math.max(0, gross - pensionDeduct);
+
+    // Training-fund excess (employer contribution above ceiling = taxable income)
+    const trainExcess    = trainingFundTaxableExcess(gross, salData.trainErRate, taxData.taxParameters);
+
+    const taxableIncome  = Math.max(0, gross - pensionDeduct + trainExcess);
 
     const taxRes    = SalaryCalc.IncomeTax.calculate(
       taxableIncome, credits.total, taxData.creditPoints.monthlyValue, taxData.taxBrackets.brackets
     );
+
+    // Section 45A — pension tax credit (35% on up to 5% of recognized income)
+    const pensionAmt   = Math.round(gross * salData.pensionEmpRate);
+    const maxRec       = (taxData.taxParameters && taxData.taxParameters.maxRecognizedSavings) || 9700;
+    const sec45aRes    = SalaryCalc.PensionTaxCredit.calculate(gross, pensionAmt, maxRec);
+    const afterSec45a  = Math.max(0, taxRes.netTax - sec45aRes.credit);
+
+    // Section 11 — qualifying settlement discount
+    const settleRes = SalaryCalc.QualifyingSettlement.apply(taxableIncome, afterSec45a, settlement);
+    const finalTax  = settleRes.finalTax;
+
     const niRes     = SalaryCalc.Insurance.calculateNI(gross, taxData.nationalInsurance);
     const healthRes = SalaryCalc.Insurance.calculateHealth(gross, taxData.healthTax);
     const empNIRes  = SalaryCalc.Insurance.calculateEmployerNI(gross, taxData.nationalInsurance);
@@ -249,7 +406,7 @@
     const pensionData = SalaryCalc.Pension.calculate(gross, salData.pensionEmpRate, salData.pensionErRate, salData.severanceRate);
     const trainData   = SalaryCalc.Pension.calculateTrainingFund(gross, salData.trainEmpRate, salData.trainErRate);
 
-    const totalDeductions = taxRes.netTax + niRes.total + healthRes.total
+    const totalDeductions = finalTax + niRes.total + healthRes.total
       + pensionData.employeeContribution + trainData.employeeContribution;
     const netPay = Math.max(0, gross - totalDeductions);
 
@@ -261,6 +418,10 @@
       pensionData, trainData, employerCost,
       credits, convergenceInfo,
       pensionDeduct, taxableIncome,
+      trainingFundExcess: trainExcess,
+      settlement, settlementDiscount: settleRes.discount,
+      pensionCredit: sec45aRes.credit, pensionCreditBase: sec45aRes.creditBase,
+      finalIncomeTax: finalTax,
       year: state.selectedYear
     };
   }
@@ -296,7 +457,7 @@
     const fmt = SalaryCalc.Fmt;
     $('livePreview').style.display = 'flex';
     setText('lp-gross',    fmt.currency(res.gross));
-    setText('lp-tax',      fmt.currency(res.taxRes.netTax));
+    setText('lp-tax',      fmt.currency(res.finalIncomeTax));
     setText('lp-deduct',   fmt.currency(res.totalDeductions));
     setText('lp-net',      fmt.currency(res.netPay));
     setText('lp-employer', fmt.currency(res.employerCost.totalCost));
@@ -331,10 +492,10 @@
     setText('r-gross',    fmt.currency(res.gross));
     setText('r-net',      fmt.currency(res.netPay));
     setText('r-employer', fmt.currency(res.employerCost.totalCost));
-    setText('r-tax',      fmt.currency(res.taxRes.netTax));
+    setText('r-tax',      fmt.currency(res.finalIncomeTax));
 
     const netPct = res.gross > 0 ? ((res.netPay / res.gross) * 100).toFixed(1) : 0;
-    const taxPct = res.gross > 0 ? ((res.taxRes.netTax / res.gross) * 100).toFixed(1) : 0;
+    const taxPct = res.gross > 0 ? ((res.finalIncomeTax / res.gross) * 100).toFixed(1) : 0;
     const erMul  = res.gross > 0 ? (res.employerCost.totalCost / res.gross).toFixed(2) : 1;
 
     setText('r-gross-sub',    'שנת מס ' + res.year);
@@ -345,7 +506,14 @@
     // Employee breakdown
     let empHtml = ''
       + bdRow('שכר ברוטו',           res.gross,                                'clr-primary')
-      + bdRow('מס הכנסה',             res.taxRes.netTax,                        'clr-negative', '-')
+      + bdRow('מס הכנסה',             res.finalIncomeTax,                       'clr-negative', '-');
+    if (res.settlementDiscount > 0) {
+      empHtml += '<div class="bd-row" style="background:var(--clr-success-lt);margin:0 -4px;padding:8px 4px;border-radius:4px">'
+              +  '<span class="bd-label" style="color:var(--clr-success)">↳ כולל הנחת יישוב מזכה (' + (res.settlement.percent) + '%)</span>'
+              +  '<span class="bd-val clr-positive">-' + fmt.currency(res.settlementDiscount) + '</span>'
+              +  '</div>';
+    }
+    empHtml += ''
       + bdRow('ביטוח לאומי (עובד)',   res.niRes.total,                          'clr-negative', '-')
       + bdRow('מס בריאות',            res.healthRes.total,                      'clr-negative', '-')
       + bdRow('פנסיה (עובד)',          res.pensionData.employeeContribution,     'clr-negative', '-')
@@ -370,8 +538,17 @@
     setText('d-gross-tax', fmt.currency(res.taxRes.grossTax));
     setText('d-eff-rate',  (res.taxRes.effectiveRate * 100).toFixed(1) + '%');
 
-    // Tax brackets table
+    // Training-fund taxable excess notice (if any)
     let tableHtml = '';
+    if (res.trainingFundExcess > 0) {
+      tableHtml += '<tr style="background:var(--clr-warning-lt)">'
+        + '<td colspan="4" style="color:var(--clr-warning);font-weight:700">'
+        + 'תוספת לשכר חייב — קרן השתלמות מעסיק מעל תקרה (₪'
+        + SalaryCalc.Fmt.number((state.taxData.taxParameters && state.taxData.taxParameters.trainingFundCeiling) || 15712)
+        + '/חודש)</td>'
+        + '<td style="color:var(--clr-warning);font-weight:700">+' + fmt.currency(res.trainingFundExcess) + '</td>'
+        + '</tr>';
+    }
     res.taxRes.breakdown.forEach(function (b) {
       const toStr = b.to !== null ? fmt.currency(b.to) : 'ומעלה';
       tableHtml += '<tr>'
@@ -387,18 +564,32 @@
         + '<td colspan="4" style="color:var(--clr-success);font-weight:700">זיכוי נקודות ('
         + res.credits.total + ' × ₪' + state.taxData.creditPoints.monthlyValue + ')</td>'
         + '<td style="color:var(--clr-success);font-weight:700">-' + fmt.currency(res.taxRes.creditDeduction) + '</td>'
-        + '</tr>'
-        + '<tr style="font-weight:800">'
-        + '<td colspan="4">מס הכנסה לתשלום</td>'
-        + '<td style="color:var(--clr-danger)">' + fmt.currency(res.taxRes.netTax) + '</td>'
         + '</tr>';
     }
+    if (res.pensionCredit > 0) {
+      tableHtml += '<tr style="background:var(--clr-success-lt)">'
+        + '<td colspan="4" style="color:var(--clr-success);font-weight:700">זיכוי סעיף 45א — 35% × ₪'
+        + fmt.number(res.pensionCreditBase) + ' (פנסיה)</td>'
+        + '<td style="color:var(--clr-success);font-weight:700">-' + fmt.currency(res.pensionCredit) + '</td>'
+        + '</tr>';
+    }
+    if (res.settlementDiscount > 0) {
+      tableHtml += '<tr style="background:var(--clr-success-lt)">'
+        + '<td colspan="4" style="color:var(--clr-success);font-weight:700">הנחת יישוב מזכה ('
+        + res.settlement.percent + '% עד ₪' + fmt.number(res.settlement.monthlyCeiling) + ')</td>'
+        + '<td style="color:var(--clr-success);font-weight:700">-' + fmt.currency(res.settlementDiscount) + '</td>'
+        + '</tr>';
+    }
+    tableHtml += '<tr style="font-weight:800">'
+      + '<td colspan="4">מס הכנסה לתשלום</td>'
+      + '<td style="color:var(--clr-danger)">' + fmt.currency(res.finalIncomeTax) + '</td>'
+      + '</tr>';
     setHTML('tax-table-body', tableHtml);
 
     // Annual summary
     setText('a-gross',    fmt.currency(res.gross    * 12));
     setText('a-net',      fmt.currency(res.netPay   * 12));
-    setText('a-tax',      fmt.currency(res.taxRes.netTax * 12));
+    setText('a-tax',      fmt.currency(res.finalIncomeTax * 12));
     setText('a-ni',       fmt.currency(res.niRes.total   * 12));
     setText('a-employer', fmt.currency(res.employerCost.totalCost * 12));
     setText('a-pension',  fmt.currency(res.pensionData.employeeContribution * 12));
@@ -592,7 +783,7 @@
           soldierMonths: $('soldierMonths')?.value,
           isImmigrant:   document.querySelector('input[name="isImmigrant"]:checked')?.value,
           yearsInIsrael: $('yearsInIsrael')?.value,
-          isSettlement:  document.querySelector('input[name="isSettlement"]:checked')?.value
+          settlementId:  $('settlementSelect')?.value
         },
         salary: {
           baseSalary: $('baseSalary')?.value,
@@ -626,13 +817,13 @@
       setRadio('gender',      emp.gender);
       setRadio('isSoldier',   emp.isSoldier);
       setRadio('isImmigrant', emp.isImmigrant);
-      setRadio('isSettlement',emp.isSettlement);
       setIfExists('maritalStatus', emp.maritalStatus);
       setIfExists('childCount',    emp.childCount);
       setIfExists('workPct',       emp.workPct);
       setIfExists('extraPoints',   emp.extraPoints);
       setIfExists('soldierMonths', emp.soldierMonths);
       setIfExists('yearsInIsrael', emp.yearsInIsrael);
+      setIfExists('settlementSelect', emp.settlementId);
 
       // Salary fields
       const sal = data.salary || {};
@@ -673,6 +864,130 @@
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#x27;');
+  }
+
+  // ── Feedback email ────────────────────────────────────────────
+  const FEEDBACK_EMAIL   = 'ym.cpa1@gmail.com';
+  const FEEDBACK_SUBJECT = 'דיווח / הצעת שיפור — מחשבון שכר';
+
+  // Build the message body. When `includeCurrentCalc` is true and a calculation
+  // exists in state, the current results are pre-filled.
+  function buildFeedbackBody(includeCurrentCalc) {
+    const fmt = SalaryCalc.Fmt;
+    const r   = state.results;
+
+    let body =
+      'שלום,\n\n' +
+      'אני משתמש/ת במחשבון השכר ורציתי לדווח על:\n' +
+      '☐ אי-דיוק בחישוב\n' +
+      '☐ הצעת שיפור / פיצ\'ר חדש\n' +
+      '☐ שאלה / הערה\n\n' +
+      '----------------------------------------\n' +
+      'תיאור הבעיה / ההצעה:\n' +
+      '(כתוב כאן את הפירוט)\n\n' +
+      '----------------------------------------\n';
+
+    if (includeCurrentCalc && r) {
+      body +=
+        'פרטי החישוב הנוכחי (לעזרה באבחון):\n' +
+        '• שנת מס:               ' + r.year + '\n' +
+        '• שכר ברוטו:            ' + fmt.currency(r.gross) + '\n' +
+        '• מס הכנסה (מחשבון):    ' + fmt.currency(r.finalIncomeTax) + '\n' +
+        '• ב.ל. עובד (מחשבון):  '  + fmt.currency(r.niRes.total) + '\n' +
+        '• מס בריאות (מחשבון):   ' + fmt.currency(r.healthRes.total) + '\n' +
+        '• פנסיה עובד:           ' + fmt.currency(r.pensionData.employeeContribution) + '\n' +
+        '• קרן השתלמות עובד:     ' + fmt.currency(r.trainData.employeeContribution) + '\n' +
+        '• שכר נטו (מחשבון):     ' + fmt.currency(r.netPay) + '\n' +
+        '• עלות מעביד (מחשבון):  ' + fmt.currency(r.employerCost.totalCost) + '\n' +
+        '• נקודות זיכוי:          ' + r.credits.total + '\n\n' +
+        'נתונים מתוכנת השכר שלי לאותו ברוטו (להשוואה):\n' +
+        '• מס הכנסה:              ___\n' +
+        '• ב.ל. עובד:            ___\n' +
+        '• מס בריאות:             ___\n' +
+        '• שכר נטו:               ___\n' +
+        '• עלות מעביד:            ___\n\n';
+    } else {
+      body +=
+        '(אופציונלי) נתוני חישוב להשוואה:\n' +
+        '• שנת מס:        ___\n' +
+        '• ברוטו:         ___\n' +
+        '• נטו:           ___\n' +
+        '• עלות מעביד:    ___\n\n';
+    }
+
+    return body + '----------------------------------------\nתודה!\n';
+  }
+
+  // Show the modal — populate textarea and wire up the three send options
+  function openFeedbackMail(includeCurrentCalc) {
+    const body  = buildFeedbackBody(includeCurrentCalc);
+    const modal = $('feedbackModal');
+    const ta    = $('modalText');
+    const status = $('modalCopyStatus');
+    if (!modal || !ta) return;
+
+    ta.value = body;
+    if (status) status.textContent = '';
+    modal.style.display = 'flex';
+
+    // Option 1 — Gmail web compose (opens in new tab, works in Chrome)
+    $('modalGmail').onclick = function () {
+      const currentBody = ta.value;
+      const url = 'https://mail.google.com/mail/?view=cm&fs=1'
+                + '&to=' + encodeURIComponent(FEEDBACK_EMAIL)
+                + '&su=' + encodeURIComponent(FEEDBACK_SUBJECT)
+                + '&body=' + encodeURIComponent(currentBody);
+      window.open(url, '_blank', 'noopener');
+      closeFeedbackModal();
+    };
+
+    // Option 2 — Default mail client (mailto:)
+    $('modalMailto').onclick = function () {
+      const currentBody = ta.value;
+      const a = document.createElement('a');
+      a.href = 'mailto:' + FEEDBACK_EMAIL
+             + '?subject=' + encodeURIComponent(FEEDBACK_SUBJECT)
+             + '&body='    + encodeURIComponent(currentBody);
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    };
+
+    // Option 3 — Copy to clipboard (modern Clipboard API only)
+    $('modalCopy').onclick = function () {
+      const currentBody = ta.value;
+      const fullText = 'אל: ' + FEEDBACK_EMAIL
+                     + '\nנושא: ' + FEEDBACK_SUBJECT
+                     + '\n\n' + currentBody;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(fullText).then(function () {
+          if (status) {
+            status.style.color = 'var(--clr-success)';
+            status.textContent = '✓ הועתק ללוח — הדבק (Ctrl+V) בכל מקום שתרצה';
+          }
+        }).catch(function () {
+          fallbackSelectForCopy(ta, status);
+        });
+      } else {
+        fallbackSelectForCopy(ta, status);
+      }
+    };
+  }
+
+  // For very old browsers — just select the text and tell user to copy manually
+  function fallbackSelectForCopy(textarea, statusEl) {
+    textarea.focus();
+    textarea.select();
+    if (statusEl) {
+      statusEl.style.color = 'var(--clr-warning)';
+      statusEl.textContent = 'הטקסט נבחר — הקש Ctrl+C להעתקה ידנית';
+    }
+  }
+
+  function closeFeedbackModal() {
+    const modal = $('feedbackModal');
+    if (modal) modal.style.display = 'none';
   }
 
   // ── Dark mode ─────────────────────────────────────────────────
@@ -725,6 +1040,27 @@
       alert('הנתונים השמורים נמחקו.');
     });
 
+    // Feedback — open the modal with three send options
+    $('reportResultBtn')?.addEventListener('click', function (e) {
+      e.preventDefault();
+      openFeedbackMail(true);
+    });
+    $('generalFeedbackBtn')?.addEventListener('click', function (e) {
+      e.preventDefault();
+      openFeedbackMail(false);
+    });
+
+    // Close modal — X button, click-outside, and Escape key
+    $('modalClose')?.addEventListener('click', closeFeedbackModal);
+    $('feedbackModal')?.addEventListener('click', function (e) {
+      if (e.target === this) closeFeedbackModal();   // click on overlay (not content)
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && $('feedbackModal')?.style.display === 'flex') {
+        closeFeedbackModal();
+      }
+    });
+
     // Calc mode
     $('modeGrossNet')?.addEventListener('click', function () { setCalcMode('grossToNet'); });
     $('modeNetGross')?.addEventListener('click', function () { setCalcMode('netToGross'); });
@@ -738,6 +1074,12 @@
     // Conditional fields
     document.querySelectorAll('input[name="isSoldier"], input[name="isImmigrant"]').forEach(function (el) {
       el.addEventListener('change', function () { updateConditionalFields(); triggerLiveUpdate(); });
+    });
+
+    // Qualifying-settlement dropdown — update info text and recalc
+    $('settlementSelect')?.addEventListener('change', function () {
+      updateSettlementInfo();
+      triggerLiveUpdate();
     });
 
     // Auto-update on any input in step 1 or 2
@@ -757,9 +1099,11 @@
   async function init() {
     initDarkMode();
     await loadTaxData();
+    populateSettlementDropdown();
     loadFromStorage();
     attachListeners();
     updateConditionalFields();
+    updateSettlementInfo();
     updateCreditPreview();
 
     if (state.usingFallback) {

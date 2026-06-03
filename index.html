@@ -206,21 +206,20 @@
           <input type="number" id="yearsInIsrael" class="form-input" min="0" max="20" value="1">
         </div>
 
-        <!-- Qualifying settlement -->
-        <div class="form-group">
-          <label class="form-label">
-            תושב יישוב מזכה
+        <!-- Qualifying settlement — Section 11 percentage discount on income tax -->
+        <div class="form-group" style="grid-column: 1 / -1">
+          <label class="form-label" for="settlementSelect">
+            הנחת יישוב מזכה (סעיף 11)
             <span class="tooltip-wrap">
               <span class="tooltip-icon">?</span>
-              <span class="tooltip-popup">תושבי יישובי ספר, עוטף עזה, יהודה ושומרון ואזורים נוספים זכאים ל-0.5 נקודת זיכוי נוספת.</span>
+              <span class="tooltip-popup">תושבי יישובים מזכים זכאים לאחוז הנחה מההכנסה החייבת (עד תקרה חודשית), המנוכה מהמס לאחר נקודות הזיכוי. בחר את אזור ההנחה לפי טופס 1312.</span>
             </span>
           </label>
-          <div class="radio-group" role="group" aria-label="יישוב מזכה">
-            <input type="radio" name="isSettlement" id="set-no" value="false" checked>
-            <label for="set-no">לא</label>
-            <input type="radio" name="isSettlement" id="set-yes" value="true">
-            <label for="set-yes">כן</label>
-          </div>
+          <select id="settlementSelect" class="form-select">
+            <option value="0">ללא הנחת יישוב</option>
+            <!-- Options populated dynamically from JSON -->
+          </select>
+          <span class="ni-threshold-notice" id="settlementInfo" style="display:none"></span>
         </div>
       </div>
 
@@ -585,16 +584,65 @@
 
       <!-- Legal notice -->
       <div class="legal-notice">
-        ⚠️ <strong>הבהרה משפטית:</strong> החישוב מבוסס על נתוני מס לשנת 2025 ומהווה אומדן בלבד. אינו מחשב את הטבות סעיף 45א לפקודה (זיכוי על הפרשות פנסיוניות) ועשוי להיות שונה מחישוב מדויק בגין נסיבות אישיות. לחישוב מחייב יש לפנות לרואה חשבון.
+        ⚠️ <strong>הבהרה משפטית:</strong> החישוב מבוסס על נתוני מס עדכניים ומהווה אומדן בלבד. עשוי להיות שונה מחישוב מדויק בגין נסיבות אישיות. לחישוב מחייב יש לפנות לרואה חשבון.
+      </div>
+
+      <!-- Feedback CTA — with current calculation pre-filled -->
+      <div class="feedback-box">
+        <div class="feedback-title">📧 מצאת אי-דיוק או רוצה להציע שיפור?</div>
+        <div class="feedback-text">
+          שלח לנו מייל עם פרטי החישוב והנתונים מהמערכת שלך — נעדכן את המחשבון בהתאם.
+        </div>
+        <a href="#" id="reportResultBtn" class="btn btn-primary btn-sm">
+          ✉ דווח על בעיה בחישוב זה
+        </a>
       </div>
 
     </section><!-- /step3 -->
 
   </main>
 
+  <!-- ═══════════════════════════════════ FEEDBACK MODAL ═══════════════════ -->
+  <div id="feedbackModal" class="modal-overlay" style="display:none" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">✉ שליחת משוב</h3>
+        <button class="modal-close" id="modalClose" aria-label="סגור">×</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-intro">בחר איך לשלוח את ההודעה — כל האפשרויות שולחות לאותה כתובת:</p>
+        <div class="modal-actions">
+          <button class="btn btn-primary" id="modalGmail">
+            📨 פתח ב-Gmail (כרטיסיה חדשה — מומלץ)
+          </button>
+          <button class="btn btn-secondary" id="modalMailto">
+            📧 פתח בתוכנת מייל ברירת מחדל
+          </button>
+          <button class="btn btn-outline" id="modalCopy">
+            📋 העתק ללוח (Ctrl+V לכל מקום)
+          </button>
+        </div>
+        <div id="modalCopyStatus" class="modal-status"></div>
+        <details class="modal-preview">
+          <summary>צפה / ערוך את תוכן ההודעה לפני שליחה</summary>
+          <textarea id="modalText" rows="18" spellcheck="false"></textarea>
+        </details>
+      </div>
+      <div class="modal-footer">
+        <span>נמען: <strong>ym.cpa1@gmail.com</strong></span>
+      </div>
+    </div>
+  </div>
+
   <!-- ═══════════════════════════════════ FOOTER ════════════════════════════ -->
   <footer class="app-footer">
-    <p>מחשבון שכר ועלות מעביד 2025 | מבוסס על נתוני רשות המסים והמוסד לביטוח לאומי | <a href="#" id="clearStorage" style="color:var(--clr-text3);text-decoration:none">מחק נתונים שמורים</a></p>
+    <p>
+      מחשבון שכר ועלות מעביד | מבוסס על נתוני רשות המסים והמוסד לביטוח לאומי
+      &nbsp;·&nbsp;
+      <a href="#" id="generalFeedbackBtn" style="color:var(--clr-primary);text-decoration:none;font-weight:600">✉ צור קשר / דווח על בעיה</a>
+      &nbsp;·&nbsp;
+      <a href="#" id="clearStorage" style="color:var(--clr-text3);text-decoration:none">מחק נתונים שמורים</a>
+    </p>
   </footer>
 
   <!-- ═══════════════════════════════════ SCRIPTS ═══════════════════════════ -->
@@ -606,6 +654,8 @@
   <script src="calculators/pension.js"></script>
   <script src="calculators/employerCost.js"></script>
   <script src="calculators/grossFromNet.js"></script>
+  <script src="calculators/qualifyingSettlement.js"></script>
+  <script src="calculators/pensionTaxCredit.js"></script>
   <script src="app.js"></script>
 
 </body>

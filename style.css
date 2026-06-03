@@ -206,6 +206,144 @@ input, select, button, textarea { font-family: inherit; }
   margin-top: 8px;
 }
 
+/* ── Feedback modal ─────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, .55);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 16px;
+  animation: fadeIn .2s ease;
+}
+.modal-content {
+  background: var(--clr-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  max-width: 540px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideIn .25s ease;
+}
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--clr-border);
+}
+.modal-header h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--clr-text);
+}
+.modal-close {
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  color: var(--clr-text3);
+  cursor: pointer;
+  width: 32px; height: 32px;
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--transition);
+}
+.modal-close:hover { background: var(--clr-border); color: var(--clr-text); }
+.modal-body {
+  padding: 22px;
+  overflow-y: auto;
+  flex: 1;
+}
+.modal-intro {
+  font-size: .92rem;
+  color: var(--clr-text2);
+  margin-bottom: 16px;
+}
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.modal-actions .btn { justify-content: center; width: 100%; height: 46px; font-size: .92rem; }
+.modal-status {
+  font-size: .85rem;
+  color: var(--clr-success);
+  font-weight: 700;
+  text-align: center;
+  min-height: 22px;
+  margin-bottom: 8px;
+  transition: opacity .3s ease;
+}
+.modal-preview {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--clr-border);
+}
+.modal-preview summary {
+  cursor: pointer;
+  font-size: .85rem;
+  color: var(--clr-text2);
+  font-weight: 600;
+  padding: 6px 0;
+  user-select: none;
+}
+.modal-preview summary:hover { color: var(--clr-primary); }
+.modal-preview textarea {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px;
+  font-family: 'Courier New', monospace;
+  font-size: .82rem;
+  line-height: 1.5;
+  border: 1.5px solid var(--clr-border2);
+  border-radius: var(--radius-sm);
+  background: var(--clr-surface2);
+  color: var(--clr-text);
+  resize: vertical;
+  direction: rtl;
+}
+.modal-footer {
+  padding: 12px 22px;
+  background: var(--clr-surface2);
+  border-top: 1px solid var(--clr-border);
+  font-size: .85rem;
+  color: var(--clr-text2);
+  text-align: center;
+}
+
+/* ── Feedback box (end of results) ─────────────────────────── */
+.feedback-box {
+  background: linear-gradient(135deg, var(--clr-primary-lt), var(--clr-surface2));
+  border: 1.5px solid var(--clr-primary);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.feedback-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--clr-primary);
+}
+.feedback-text {
+  font-size: .88rem;
+  color: var(--clr-text2);
+  line-height: 1.5;
+}
+.feedback-box .btn {
+  margin-top: 6px;
+}
+
 /* ── Step Indicator ───────────────────────────────────────── */
 .steps {
   display: flex;

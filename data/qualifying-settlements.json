@@ -1,0 +1,23 @@
+{
+  "source": "רשות המסים — רשימת אזורי הנחה ביישובים מזכים (סעיף 11 לפקודה)",
+  "note": "הזיכוי הוא אחוז מההכנסה החייבת עד תקרה חודשית, מנוכה מהמס לאחר נקודות זיכוי",
+  "2025": [
+    { "id": 0,  "label": "ללא הנחת יישוב",                          "percent": 0,  "monthlyCeiling": 0 },
+    { "id": 1,  "label": "5% עד ₪14,860 בחודש",                     "percent": 5,  "monthlyCeiling": 14860 },
+    { "id": 2,  "label": "7% עד ₪12,220 בחודש",                     "percent": 7,  "monthlyCeiling": 12220 },
+    { "id": 5,  "label": "10% עד ₪15,000 בחודש",                    "percent": 10, "monthlyCeiling": 15000 },
+    { "id": 29, "label": "12% עד ₪15,500 בחודש",                    "percent": 12, "monthlyCeiling": 15500 },
+    { "id": 6,  "label": "12% עד ₪15,550 בחודש",                    "percent": 12, "monthlyCeiling": 15550 },
+    { "id": 8,  "label": "12% עד ₪17,770 בחודש",                    "percent": 12, "monthlyCeiling": 17770 },
+    { "id": 10, "label": "12% עד ₪18,880 בחודש",                    "percent": 12, "monthlyCeiling": 18880 },
+    { "id": 9,  "label": "14% עד ₪18,330 בחודש",                    "percent": 14, "monthlyCeiling": 18330 },
+    { "id": 13, "label": "14% עד ₪21,660 בחודש",                    "percent": 14, "monthlyCeiling": 21660 },
+    { "id": 11, "label": "16% עד ₪18,880 בחודש",                    "percent": 16, "monthlyCeiling": 18880 },
+    { "id": 12, "label": "18% עד ₪20,450 בחודש",                    "percent": 18, "monthlyCeiling": 20450 },
+    { "id": 14, "label": "18% עד ₪21,660 בחודש",                    "percent": 18, "monthlyCeiling": 21660 },
+    { "id": 15, "label": "20% עד ₪21,660 בחודש",                    "percent": 20, "monthlyCeiling": 21660 },
+    { "id": 16, "label": "20% עד ₪22,320 בחודש",                    "percent": 20, "monthlyCeiling": 22320 },
+    { "id": 88, "label": "אילת — 10% עד ₪22,380 (אזור סחר חופשי)",   "percent": 10, "monthlyCeiling": 22380 },
+    { "id": 99, "label": "מיוחד חברי קיבוץ מלכיה — 7% עד ₪16,500",   "percent": 7,  "monthlyCeiling": 16500 }
+  ]
+}
