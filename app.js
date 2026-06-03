@@ -992,10 +992,15 @@
 
   // ── Dark mode ─────────────────────────────────────────────────
   function initDarkMode() {
-    const stored   = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const isDark   = stored ? stored === 'dark' : prefersDark;
-    if (isDark) document.documentElement.setAttribute('data-theme', 'dark');
+    const stored = localStorage.getItem('theme');
+    // Default to light mode (white) if no theme preference is stored
+    const isDark = stored === 'dark';
+    
+    if (isDark) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
     updateDarkIcon(isDark);
   }
 
