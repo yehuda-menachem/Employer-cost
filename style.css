@@ -923,10 +923,9 @@ input, select, button, textarea { font-family: inherit; }
 
 /* ── Print ─────────────────────────────────────────────────── */
 @media print {
-  .app-header, .form-section, .steps, .form-actions,
-  .results-actions, .app-footer, .live-preview { display: none !important; }
+  .app-header, .steps, .form-actions, .results-actions, .app-footer, .live-preview, #step1, #step2 { display: none !important; }
   .card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
-  body  { background: #fff; color: #000; }
+  body { background: #fff; color: #000; }
 }
 
 /* ── Mobile ─────────────────────────────────────────────────── */
