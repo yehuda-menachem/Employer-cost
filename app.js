@@ -933,7 +933,7 @@
   }
 
   function setRadio(name, value) {
-    if (!value) return;
+    if (value == null) return;
     const el = document.querySelector('input[name="' + name + '"][value="' + value + '"]');
     if (el) el.checked = true;
   }
@@ -1158,9 +1158,14 @@
       triggerLiveUpdate();
     });
 
-    // Conditional fields
-    document.querySelectorAll('input[name="isSoldier"], input[name="isImmigrant"], input[name="isReserve"]').forEach(function (el) {
-      el.addEventListener('change', function () { updateConditionalFields(); triggerLiveUpdate(); });
+    // Conditional fields - explicit listeners for each radio group
+    ['isSoldier', 'isImmigrant', 'isReserve'].forEach(function (name) {
+      document.querySelectorAll('input[name="' + name + '"]').forEach(function (el) {
+        el.addEventListener('change', function () {
+          updateConditionalFields();
+          triggerLiveUpdate();
+        });
+      });
     });
 
     // Gender change — re-render children so displayed point values update

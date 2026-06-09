@@ -930,20 +930,479 @@ input, select, button, textarea { font-family: inherit; }
 }
 
 /* ── Mobile ─────────────────────────────────────────────────── */
-@media (max-width: 600px) {
-  .app-main { padding: 16px 12px 48px; }
-  .card { padding: 18px 14px; }
-  .header-sub { display: none; }
-  .form-grid { grid-template-columns: 1fr; }
-  .metrics-grid { grid-template-columns: 1fr 1fr; }
-  .metric-value { font-size: 1.3rem; }
-  .steps { gap: 0; }
-  .step-connector { max-width: 40px; }
-  .step-label { font-size: .68rem; }
-  .form-actions { flex-direction: column-reverse; }
-  .btn { justify-content: center; }
-  .results-header { flex-direction: column; align-items: flex-start; }
+@media (max-width: 768px) {
+  /* Layout adjustments */
+  .app-main {
+    padding: 12px 12px 50px;
+    max-width: 100%;
+  }
+
+  /* Header optimization */
+  .header-inner {
+    padding: 0 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .header-brand {
+    flex: 1;
+    min-width: 0;
+  }
+  .header-title {
+    font-size: 1rem;
+  }
+  .header-sub {
+    display: none;
+  }
+  .header-actions {
+    gap: 6px;
+  }
+
+  /* Badge and buttons sizing */
+  .badge-year {
+    padding: 3px 8px;
+    font-size: .7rem;
+  }
+  .btn-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  /* Step indicator adjustments */
+  .steps {
+    gap: 0;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .step-item {
+    gap: 3px;
+    flex: 1;
+    min-width: 60px;
+  }
+  .step-circle {
+    width: 32px;
+    height: 32px;
+    font-size: .8rem;
+  }
+  .step-label {
+    font-size: .62rem;
+    max-width: 55px;
+    text-align: center;
+  }
+  .step-connector {
+    max-width: 25px;
+    height: 2px;
+    margin: 0 2px;
+    margin-bottom: 20px;
+  }
+
+  /* Card adjustments */
+  .card {
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: var(--radius);
+  }
+  .card-inner {
+    padding: 14px;
+    margin-top: 14px;
+  }
+
+  /* Section headers */
+  .section-header {
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+  }
+  .section-desc {
+    font-size: .8rem;
+    line-height: 1.4;
+  }
+
+  /* Form grid and inputs */
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .form-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group {
+    gap: 6px;
+  }
+  .form-label {
+    font-size: .8rem;
+    font-weight: 600;
+  }
+  .form-input,
+  .form-select {
+    height: 40px;
+    padding: 0 10px;
+    font-size: .95rem;
+  }
+  .input-wrap .form-input {
+    padding-left: 28px;
+  }
+  .input-wrap .suffix {
+    left: 10px;
+  }
+
+  /* Radio groups */
+  .radio-group {
+    height: 40px;
+    font-size: .85rem;
+  }
+
+  /* Calculation mode toggle */
+  .calc-mode {
+    margin-bottom: 20px;
+    padding: 3px;
+  }
+  .calc-mode-btn {
+    height: 38px;
+    font-size: .88rem;
+  }
+
+  /* Pension toggle */
+  .subsection-title {
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: .85rem;
+  }
+  .btn-pension-toggle {
+    padding: 5px 12px;
+    font-size: .75rem;
+  }
+
+  /* Credit preview */
+  .credit-preview {
+    gap: 10px;
+  }
+  .credit-num {
+    font-size: 2.2rem;
+  }
+  .credit-unit {
+    font-size: .9rem;
+  }
+  .credit-saving {
+    font-size: .8rem;
+    padding: 3px 8px;
+  }
+
+  /* Children grid */
+  .children-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Results metrics */
+  .metrics-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .metric-card {
+    padding: 14px;
+    gap: 4px;
+  }
+  .metric-label {
+    font-size: .72rem;
+  }
+  .metric-value {
+    font-size: 1.3rem;
+  }
+  .metric-sub {
+    font-size: .72rem;
+  }
+
+  /* Results split */
+  .results-split {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Annual grid */
+  .annual-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .annual-item {
+    padding: 12px;
+  }
+  .annual-label {
+    font-size: .72rem;
+  }
+  .annual-value {
+    font-size: 1.1rem;
+  }
+
+  /* Credit summary */
+  .credit-sum-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .cs-item {
+    padding: 10px;
+    font-size: .82rem;
+  }
+
+  /* Data table */
+  .data-table {
+    font-size: .8rem;
+  }
+  .data-table th,
+  .data-table td {
+    padding: 8px;
+  }
+
+  /* Live preview */
+  .live-preview {
+    padding: 12px 14px;
+    gap: 14px;
+    flex-direction: column;
+  }
+  .lp-item {
+    min-width: auto;
+    width: 100%;
+  }
+  .lp-divider {
+    display: none;
+  }
+
+  /* Form actions */
+  .form-actions {
+    flex-direction: column-reverse;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 16px;
+  }
+
+  /* Buttons */
+  .btn {
+    justify-content: center;
+    gap: 6px;
+    font-size: .88rem;
+    height: 40px;
+    padding: 0 16px;
+  }
+  .btn-sm {
+    height: 36px;
+    padding: 0 12px;
+    font-size: .8rem;
+  }
+
+  /* Results header */
+  .results-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .results-actions {
+    flex-direction: column;
+  }
+  .results-actions .btn {
+    width: 100%;
+  }
+
+  /* Modal adjustments */
+  .modal-content {
+    max-width: 90vw;
+    margin: 16px;
+    border-radius: var(--radius);
+  }
+  .modal-header {
+    padding: 14px 16px;
+  }
+  .modal-body {
+    padding: 16px;
+  }
+  .modal-actions {
+    gap: 8px;
+  }
+  .modal-actions .btn {
+    height: 40px;
+    font-size: .85rem;
+  }
+  .modal-footer {
+    padding: 10px 16px;
+    font-size: .78rem;
+  }
+
+  /* Feedback box */
+  .feedback-box {
+    padding: 14px 16px;
+    gap: 8px;
+  }
+  .feedback-title {
+    font-size: .95rem;
+  }
+  .feedback-text {
+    font-size: .82rem;
+  }
+
+  /* Legal notice */
+  .legal-notice {
+    font-size: .78rem;
+    padding: 10px 12px;
+  }
+
+  /* Tooltip adjustments */
+  .tooltip-popup {
+    width: 180px;
+    font-size: .75rem;
+    top: calc(100% + 4px);
+  }
+
+  /* Footer */
+  .app-footer {
+    padding: 16px 12px;
+    font-size: .75rem;
+  }
 }
+
+@media (max-width: 600px) {
+  .app-main {
+    padding: 8px 8px 40px;
+  }
+
+  .header-inner {
+    padding: 0 8px;
+  }
+  .header-brand {
+    gap: 8px;
+  }
+  .header-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+  .header-title {
+    font-size: .95rem;
+  }
+
+  .badge-year {
+    padding: 2px 6px;
+    font-size: .65rem;
+  }
+  .btn-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .form-input,
+  .form-select {
+    height: 40px;
+    font-size: .92rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  .metric-value {
+    font-size: 1.2rem;
+  }
+
+  .section-title {
+    font-size: 1rem;
+  }
+
+  .btn {
+    height: 40px;
+    padding: 0 12px;
+    font-size: .85rem;
+  }
+}
+
 @media (max-width: 400px) {
-  .metrics-grid { grid-template-columns: 1fr; }
+  .app-main {
+    padding: 6px 6px 40px;
+  }
+
+  .header-inner {
+    padding: 0 6px;
+  }
+  .header-brand {
+    gap: 6px;
+  }
+  .header-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+  .header-title {
+    font-size: .9rem;
+  }
+
+  .card {
+    padding: 10px;
+    margin-bottom: 12px;
+  }
+
+  .step-label {
+    font-size: .58rem;
+  }
+
+  .metric-card {
+    padding: 10px;
+  }
+  .metric-label {
+    font-size: .65rem;
+  }
+  .metric-value {
+    font-size: 1.05rem;
+  }
+
+  .section-title {
+    font-size: .95rem;
+    margin-bottom: 4px;
+  }
+  .section-desc {
+    font-size: .75rem;
+  }
+
+  .form-label {
+    font-size: .75rem;
+  }
+
+  .form-input,
+  .form-select {
+    height: 40px;
+    padding: 0 8px;
+    font-size: .9rem;
+  }
+  .input-wrap .form-input {
+    padding-left: 24px;
+  }
+
+  .btn {
+    height: 40px;
+    padding: 0 10px;
+    font-size: .8rem;
+  }
+  .btn-sm {
+    height: 34px;
+    padding: 0 10px;
+    font-size: .75rem;
+  }
+
+  .modal-content {
+    max-width: 95vw;
+  }
+
+  .annual-grid {
+    grid-template-columns: 1fr;
+  }
+  .annual-label {
+    font-size: .65rem;
+  }
+  .annual-value {
+    font-size: 1rem;
+  }
 }
