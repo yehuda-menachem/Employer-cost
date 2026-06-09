@@ -54,13 +54,15 @@
       }
 
       // Children — collect from age groups
+      // Determine parent role: female = mother (receives child benefit), male = father
+      const parentRole = data.gender === 'female' ? 'mother' : 'father';
       const children = data.children || [];
       children.forEach(function (child, i) {
         const n = i + 1;
-        if (child.ageGroup === 'under1')   add('ילד ' + n + ' (מתחת לשנה)', cfg.children.under1);
-        else if (child.ageGroup === 'age1to5')  add('ילד ' + n + ' (גיל 1–5)', cfg.children.age1to5);
-        else if (child.ageGroup === 'age6to17') add('ילד ' + n + ' (גיל 6–17)', cfg.children.age6to17);
-      });
+        var points = this._getChildPoints(child.ageGroup, parentRole, cfg.children);
+        var label = this._getChildLabel(child.ageGroup, n);
+        add(label, points);
+      }.bind(this));
 
       // New immigrant
       if (data.isNewImmigrant) {
@@ -92,6 +94,42 @@
         monthlyValue: cfg.monthlyValue,
         monthlyTaxSaving: Math.round(total * cfg.monthlyValue)
       };
+    },
+
+    /**
+     * Get child credit points for a specific age group and parent role.
+     * Supports both new format (mother/father objects) and legacy format (flat numbers).
+     */
+    _getChildPoints: function (ageGroup, parentRole, childrenCfg) {
+      var entry = childrenCfg[ageGroup];
+      if (!entry) return 0;
+      // New format: { mother: X, father: Y }
+      if (typeof entry === 'object' && entry !== null) {
+        return entry[parentRole] || 0;
+      }
+      // Legacy flat format: just a number
+      return entry;
+    },
+
+    /**
+     * Get display label for child age group.
+     */
+    _getChildLabel: function (ageGroup, childNumber) {
+      var labels = {
+        'age0':      'שנת לידה',
+        'age1':      'גיל 1',
+        'age2':      'גיל 2',
+        'age3':      'גיל 3',
+        'age4to5':   'גיל 4–5',
+        'age6to12':  'גיל 6–12',
+        'age13to17': 'גיל 13–17',
+        'age18':     'גיל 18',
+        // Legacy labels
+        'under1':    'מתחת לשנה',
+        'age1to5':   'גיל 1–5',
+        'age6to17':  'גיל 6–17'
+      };
+      return 'ילד ' + childNumber + ' (' + (labels[ageGroup] || ageGroup) + ')';
     },
 
     _immigrantPoints: function (years, cfg) {

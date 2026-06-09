@@ -50,7 +50,16 @@
         monthlyValue: 242, annualValue: 2904,
         base: { male: 2.25, female: 2.75 },
         singleParent: { points: 0.5 },
-        children: { under1: 1.5, age1to5: 2.5, age6to17: 0.5 },
+        children: {
+          age0:      { mother: 2.5,  father: 2.5 },
+          age1:      { mother: 4.5,  father: 4.5 },
+          age2:      { mother: 4.5,  father: 4.5 },
+          age3:      { mother: 3.5,  father: 3.5 },
+          age4to5:   { mother: 2.5,  father: 2.5 },
+          age6to12:  { mother: 2.0,  father: 1.0 },
+          age13to17: { mother: 2.0,  father: 1.0 },
+          age18:     { mother: 1.0,  father: 0.0 }
+        },
         newImmigrant: { year1: 3.0, year2: 2.0, year3: 1.0, year4: 1.0 },
         releasedSoldier: { points: 2.0, maxMonths: 36 },
         qualifyingSettlement: { points: 0.5 }
@@ -59,7 +68,16 @@
         monthlyValue: 242, annualValue: 2904,
         base: { male: 2.25, female: 2.75 },
         singleParent: { points: 0.5 },
-        children: { under1: 1.5, age1to5: 2.5, age6to17: 0.5 },
+        children: {
+          age0:      { mother: 2.5,  father: 2.5 },
+          age1:      { mother: 4.5,  father: 4.5 },
+          age2:      { mother: 4.5,  father: 4.5 },
+          age3:      { mother: 3.5,  father: 3.5 },
+          age4to5:   { mother: 2.5,  father: 2.5 },
+          age6to12:  { mother: 2.0,  father: 1.0 },
+          age13to17: { mother: 2.0,  father: 1.0 },
+          age18:     { mother: 1.0,  father: 0.0 }
+        },
         newImmigrant: { year1: 3.0, year2: 2.0, year3: 1.0, year4: 1.0 },
         releasedSoldier: { points: 2.0, maxMonths: 36 },
         qualifyingSettlement: { points: 0.5 }
@@ -688,6 +706,17 @@
   }
 
   // ── Children age inputs ──────────────────────────────────────
+  function getChildPointsForDisplay(ageKey) {
+    if (!state.taxData || !state.taxData.creditPoints) return '';
+    var entry = state.taxData.creditPoints.children[ageKey];
+    if (!entry) return '';
+    var gender = document.querySelector('input[name="gender"]:checked')?.value || 'male';
+    var role = gender === 'female' ? 'mother' : 'father';
+    // Support both new {mother,father} and legacy flat format
+    var pts = (typeof entry === 'object' && entry !== null) ? (entry[role] || 0) : entry;
+    return ' (' + pts + ' נק\')';
+  }
+
   function renderChildrenInputs() {
     const count   = parseInt($('childCount')?.value) || 0;
     const section = $('childrenSection');
@@ -702,9 +731,14 @@
       html += '<div class="form-group">'
             + '<label class="form-label" for="child-age-' + i + '">ילד ' + (i + 1) + '</label>'
             + '<select class="form-select" id="child-age-' + i + '">'
-            + '<option value="under1">מתחת לשנה (1.5 נק\')</option>'
-            + '<option value="age1to5" selected>גיל 1–5 (2.5 נק\')</option>'
-            + '<option value="age6to17">גיל 6–17 (0.5 נק\')</option>'
+            + '<option value="age0">שנת לידה' + getChildPointsForDisplay('age0') + '</option>'
+            + '<option value="age1">גיל 1' + getChildPointsForDisplay('age1') + '</option>'
+            + '<option value="age2" selected>גיל 2' + getChildPointsForDisplay('age2') + '</option>'
+            + '<option value="age3">גיל 3' + getChildPointsForDisplay('age3') + '</option>'
+            + '<option value="age4to5">גיל 4–5' + getChildPointsForDisplay('age4to5') + '</option>'
+            + '<option value="age6to12">גיל 6–12' + getChildPointsForDisplay('age6to12') + '</option>'
+            + '<option value="age13to17">גיל 13–17' + getChildPointsForDisplay('age13to17') + '</option>'
+            + '<option value="age18">גיל 18' + getChildPointsForDisplay('age18') + '</option>'
             + '</select></div>';
     }
     list.innerHTML = html;
@@ -1079,6 +1113,11 @@
     // Conditional fields
     document.querySelectorAll('input[name="isSoldier"], input[name="isImmigrant"]').forEach(function (el) {
       el.addEventListener('change', function () { updateConditionalFields(); triggerLiveUpdate(); });
+    });
+
+    // Gender change — re-render children so displayed point values update
+    document.querySelectorAll('input[name="gender"]').forEach(function (el) {
+      el.addEventListener('change', function () { renderChildrenInputs(); triggerLiveUpdate(); });
     });
 
     // Qualifying-settlement dropdown — update info text and recalc
