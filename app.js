@@ -21,12 +21,12 @@
       },
       '2026': {
         brackets: [
-          { upTo: 7290,  rate: 0.10, label: 'מדרגה 1' },
-          { upTo: 10440, rate: 0.14, label: 'מדרגה 2' },
-          { upTo: 16760, rate: 0.20, label: 'מדרגה 3' },
-          { upTo: 23290, rate: 0.31, label: 'מדרגה 4' },
-          { upTo: 48490, rate: 0.35, label: 'מדרגה 5' },
-          { upTo: 62400, rate: 0.47, label: 'מדרגה 6' },
+          { upTo: 7010,  rate: 0.10, label: 'מדרגה 1' },
+          { upTo: 10060, rate: 0.14, label: 'מדרגה 2' },
+          { upTo: 19000, rate: 0.20, label: 'מדרגה 3' },
+          { upTo: 25100, rate: 0.31, label: 'מדרגה 4' },
+          { upTo: 46690, rate: 0.35, label: 'מדרגה 5' },
+          { upTo: 60130, rate: 0.47, label: 'מדרגה 6' },
           { upTo: null,  rate: 0.50, label: 'מדרגה 7' }
         ]
       }
@@ -37,13 +37,13 @@
         employer: { minimumBase: 6247.67, lowerThreshold: 7522, ceiling: 50695, lowerRate: 0.0451, upperRate: 0.076 }
       },
       '2026': {
-        employee: { minimumBase: 6400,    lowerThreshold: 7830, ceiling: 52000, lowerRate: 0.0104, upperRate: 0.07  },
-        employer: { minimumBase: 6400,    lowerThreshold: 7830, ceiling: 52000, lowerRate: 0.0451, upperRate: 0.076 }
+        employee: { minimumBase: 6400,    lowerThreshold: 7703, ceiling: 51910, lowerRate: 0.0104, upperRate: 0.07  },
+        employer: { minimumBase: 6400,    lowerThreshold: 7703, ceiling: 51910, lowerRate: 0.0451, upperRate: 0.076 }
       }
     },
     healthTax: {
       '2025': { employee: { minimumBase: 6247.67, lowerThreshold: 7522, ceiling: 50695, lowerRate: 0.0323, upperRate: 0.0517 } },
-      '2026': { employee: { minimumBase: 6400,    lowerThreshold: 7830, ceiling: 52000, lowerRate: 0.0323, upperRate: 0.0517 } }
+      '2026': { employee: { minimumBase: 6400,    lowerThreshold: 7703, ceiling: 51910, lowerRate: 0.0323, upperRate: 0.0517 } }
     },
     creditPoints: {
       '2025': {
@@ -62,7 +62,26 @@
         },
         newImmigrant: { year1: 3.0, year2: 2.0, year3: 1.0, year4: 1.0 },
         releasedSoldier: { points: 2.0, maxMonths: 36 },
-        qualifyingSettlement: { points: 0.5 }
+        qualifyingSettlement: { points: 0.5 },
+        reserveDuty: {
+          brackets: [
+            { minDays: 30, maxDays: 39, points: 0.5 },
+            { minDays: 40, maxDays: 49, points: 0.75 },
+            { minDays: 50, maxDays: 54, points: 1.0 },
+            { minDays: 55, maxDays: 59, points: 1.25 },
+            { minDays: 60, maxDays: 64, points: 1.5 },
+            { minDays: 65, maxDays: 69, points: 1.75 },
+            { minDays: 70, maxDays: 74, points: 2.0 },
+            { minDays: 75, maxDays: 79, points: 2.25 },
+            { minDays: 80, maxDays: 84, points: 2.5 },
+            { minDays: 85, maxDays: 89, points: 2.75 },
+            { minDays: 90, maxDays: 94, points: 3.0 },
+            { minDays: 95, maxDays: 99, points: 3.25 },
+            { minDays: 100, maxDays: 104, points: 3.5 },
+            { minDays: 105, maxDays: 109, points: 3.75 },
+            { minDays: 110, maxDays: 365, points: 4.0 }
+          ]
+        }
       },
       '2026': {
         monthlyValue: 242, annualValue: 2904,
@@ -80,7 +99,26 @@
         },
         newImmigrant: { year1: 3.0, year2: 2.0, year3: 1.0, year4: 1.0 },
         releasedSoldier: { points: 2.0, maxMonths: 36 },
-        qualifyingSettlement: { points: 0.5 }
+        qualifyingSettlement: { points: 0.5 },
+        reserveDuty: {
+          brackets: [
+            { minDays: 30, maxDays: 39, points: 0.5 },
+            { minDays: 40, maxDays: 49, points: 0.75 },
+            { minDays: 50, maxDays: 54, points: 1.0 },
+            { minDays: 55, maxDays: 59, points: 1.25 },
+            { minDays: 60, maxDays: 64, points: 1.5 },
+            { minDays: 65, maxDays: 69, points: 1.75 },
+            { minDays: 70, maxDays: 74, points: 2.0 },
+            { minDays: 75, maxDays: 79, points: 2.25 },
+            { minDays: 80, maxDays: 84, points: 2.5 },
+            { minDays: 85, maxDays: 89, points: 2.75 },
+            { minDays: 90, maxDays: 94, points: 3.0 },
+            { minDays: 95, maxDays: 99, points: 3.25 },
+            { minDays: 100, maxDays: 104, points: 3.5 },
+            { minDays: 105, maxDays: 109, points: 3.75 },
+            { minDays: 110, maxDays: 365, points: 4.0 }
+          ]
+        }
       }
     },
     qualifyingSettlements: {
@@ -112,6 +150,8 @@
         { id: 6,  label: '12% עד ₪15,550 בחודש',                    percent: 12, monthlyCeiling: 15550 },
         { id: 8,  label: '12% עד ₪17,770 בחודש',                    percent: 12, monthlyCeiling: 17770 },
         { id: 10, label: '12% עד ₪18,880 בחודש',                    percent: 12, monthlyCeiling: 18880 },
+        { id: 17, label: '14% עד ₪15,000 בחודש',                    percent: 14, monthlyCeiling: 15000 },
+        { id: 18, label: '14% עד ₪17,770 בחודש',                    percent: 14, monthlyCeiling: 17770 },
         { id: 9,  label: '14% עד ₪18,330 בחודש',                    percent: 14, monthlyCeiling: 18330 },
         { id: 13, label: '14% עד ₪21,660 בחודש',                    percent: 14, monthlyCeiling: 21660 },
         { id: 11, label: '16% עד ₪18,880 בחודש',                    percent: 16, monthlyCeiling: 18880 },
@@ -119,8 +159,7 @@
         { id: 14, label: '18% עד ₪21,660 בחודש',                    percent: 18, monthlyCeiling: 21660 },
         { id: 15, label: '20% עד ₪21,660 בחודש',                    percent: 20, monthlyCeiling: 21660 },
         { id: 16, label: '20% עד ₪22,320 בחודש',                    percent: 20, monthlyCeiling: 22320 },
-        { id: 88, label: 'אילת — 10% עד ₪22,380 (אזור סחר חופשי)',   percent: 10, monthlyCeiling: 22380 },
-        { id: 99, label: 'מיוחד חברי קיבוץ מלכיה — 7% עד ₪16,500',   percent: 7,  monthlyCeiling: 16500 }
+        { id: 88, label: 'אילת — 10% עד ₪22,380 (אזור סחר חופשי)',   percent: 10, monthlyCeiling: 22380 }
       ]
     },
     taxParameters: {
@@ -132,11 +171,11 @@
         severanceCeiling:     13750
       },
       '2026': {
-        averageWage:          12536,
+        averageWage:          13769,
         maxRecognizedSavings: 9700,
         trainingFundCeiling:  15712,
-        pensionCeiling:       33290,
-        severanceCeiling:     13750
+        pensionCeiling:       34423,
+        severanceCeiling:     45600
       }
     }
   };
@@ -292,6 +331,8 @@
       monthsSinceDischarge: parseFloat($('soldierMonths')?.value) || 0,
       isNewImmigrant:       document.querySelector('input[name="isImmigrant"]:checked')?.value === 'true',
       yearsInIsrael:        parseFloat($('yearsInIsrael')?.value) || 1,
+      isReserve:            document.querySelector('input[name="isReserve"]:checked')?.value === 'true',
+      reserveDays:          parseFloat($('reserveDays')?.value) || 0,
       settlementId:         parseInt($('settlementSelect')?.value, 10) || 0,
       workPercentage:       parseFloat($('workPct')?.value) || 100,
       additionalPoints:     parseFloat($('extraPoints')?.value) || 0
@@ -751,10 +792,13 @@
   function updateConditionalFields() {
     const isSoldier   = document.querySelector('input[name="isSoldier"]:checked')?.value === 'true';
     const isImmigrant = document.querySelector('input[name="isImmigrant"]:checked')?.value === 'true';
+    const isReserve   = document.querySelector('input[name="isReserve"]:checked')?.value === 'true';
     const solGroup = $('soldierMonthsGroup');
     const immGroup = $('immigrantYearsGroup');
+    const resGroup = $('reserveDaysGroup');
     if (solGroup) solGroup.style.display = isSoldier   ? 'flex' : 'none';
     if (immGroup) immGroup.style.display = isImmigrant ? 'flex' : 'none';
+    if (resGroup) resGroup.style.display = isReserve   ? 'flex' : 'none';
   }
 
   // ── Calculation mode toggle ──────────────────────────────────
@@ -817,6 +861,8 @@
           soldierMonths: $('soldierMonths')?.value,
           isImmigrant:   document.querySelector('input[name="isImmigrant"]:checked')?.value,
           yearsInIsrael: $('yearsInIsrael')?.value,
+          isReserve:     document.querySelector('input[name="isReserve"]:checked')?.value,
+          reserveDays:   $('reserveDays')?.value,
           settlementId:  $('settlementSelect')?.value
         },
         salary: {
@@ -851,12 +897,14 @@
       setRadio('gender',      emp.gender);
       setRadio('isSoldier',   emp.isSoldier);
       setRadio('isImmigrant', emp.isImmigrant);
+      setRadio('isReserve',   emp.isReserve);
       setIfExists('maritalStatus', emp.maritalStatus);
       setIfExists('childCount',    emp.childCount);
       setIfExists('workPct',       emp.workPct);
       setIfExists('extraPoints',   emp.extraPoints);
       setIfExists('soldierMonths', emp.soldierMonths);
       setIfExists('yearsInIsrael', emp.yearsInIsrael);
+      setIfExists('reserveDays',   emp.reserveDays);
       setIfExists('settlementSelect', emp.settlementId);
 
       // Salary fields
@@ -1111,7 +1159,7 @@
     });
 
     // Conditional fields
-    document.querySelectorAll('input[name="isSoldier"], input[name="isImmigrant"]').forEach(function (el) {
+    document.querySelectorAll('input[name="isSoldier"], input[name="isImmigrant"], input[name="isReserve"]').forEach(function (el) {
       el.addEventListener('change', function () { updateConditionalFields(); triggerLiveUpdate(); });
     });
 

@@ -20,18 +20,18 @@
     }
   },
   "2026": {
-    "note": "הערכה — אמת מול נתוני 2026 רשמיים",
+    "note": "ערכים מותאמים לנתונים רשמיים מתוכנת השכר (national-insurance.json)",
     "employee": {
       "minimumBase":    6400,
-      "lowerThreshold": 7830,
-      "ceiling":        52000,
+      "lowerThreshold": 7703,
+      "ceiling":        51910,
       "lowerRate":      0.0104,
       "upperRate":      0.07
     },
     "employer": {
       "minimumBase":    6400,
-      "lowerThreshold": 7830,
-      "ceiling":        52000,
+      "lowerThreshold": 7703,
+      "ceiling":        51910,
       "lowerRate":      0.0451,
       "upperRate":      0.076
     }

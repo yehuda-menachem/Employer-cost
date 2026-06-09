@@ -13,8 +13,8 @@
   "2026": {
     "employee": {
       "minimumBase":    6400,
-      "lowerThreshold": 7830,
-      "ceiling":        52000,
+      "lowerThreshold": 7703,
+      "ceiling":        51910,
       "lowerRate":      0.0323,
       "upperRate":      0.0517
     }

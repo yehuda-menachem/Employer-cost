@@ -14,16 +14,16 @@
     "interestRate":            0.0669
   },
   "2026": {
-    "averageWage":             12536,
+    "averageWage":             13769,
     "maxRecognizedSavings":    9700,
     "trainingFundCeiling":     15712,
-    "pensionCeiling":          33290,
-    "severanceCeiling":        13750,
+    "pensionCeiling":          34423,
+    "severanceCeiling":        45600,
     "section45SecondTier":     19400,
     "section47SecondTier":     24250,
     "highWageLevyRate":        0,
     "highWageLevyCeiling":     0,
     "vatRate":                 0.18,
-    "interestRate":            0.0669
+    "interestRate":            0.0653
   }
 }

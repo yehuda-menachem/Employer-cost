@@ -18,7 +18,26 @@
     },
     "newImmigrant":{ "year1": 3.0, "year2": 2.0, "year3": 1.0, "year4": 1.0 },
     "releasedSoldier":       { "points": 2.0, "maxMonths": 36 },
-    "qualifyingSettlement":  { "points": 0.5 }
+    "qualifyingSettlement":  { "points": 0.5 },
+    "reserveDuty": {
+      "brackets": [
+        { "minDays": 30, "maxDays": 39, "points": 0.5 },
+        { "minDays": 40, "maxDays": 49, "points": 0.75 },
+        { "minDays": 50, "maxDays": 54, "points": 1.0 },
+        { "minDays": 55, "maxDays": 59, "points": 1.25 },
+        { "minDays": 60, "maxDays": 64, "points": 1.5 },
+        { "minDays": 65, "maxDays": 69, "points": 1.75 },
+        { "minDays": 70, "maxDays": 74, "points": 2.0 },
+        { "minDays": 75, "maxDays": 79, "points": 2.25 },
+        { "minDays": 80, "maxDays": 84, "points": 2.5 },
+        { "minDays": 85, "maxDays": 89, "points": 2.75 },
+        { "minDays": 90, "maxDays": 94, "points": 3.0 },
+        { "minDays": 95, "maxDays": 99, "points": 3.25 },
+        { "minDays": 100, "maxDays": 104, "points": 3.5 },
+        { "minDays": 105, "maxDays": 109, "points": 3.75 },
+        { "minDays": 110, "maxDays": 365, "points": 4.0 }
+      ]
+    }
   },
   "2026": {
     "note": "שווי נקודת זיכוי 2026 — נשאר ₪242 לפי תוכנות שכר עדכניות",
@@ -38,6 +57,25 @@
     },
     "newImmigrant":{ "year1": 3.0, "year2": 2.0, "year3": 1.0, "year4": 1.0 },
     "releasedSoldier":       { "points": 2.0, "maxMonths": 36 },
-    "qualifyingSettlement":  { "points": 0.5 }
+    "qualifyingSettlement":  { "points": 0.5 },
+    "reserveDuty": {
+      "brackets": [
+        { "minDays": 30, "maxDays": 39, "points": 0.5 },
+        { "minDays": 40, "maxDays": 49, "points": 0.75 },
+        { "minDays": 50, "maxDays": 54, "points": 1.0 },
+        { "minDays": 55, "maxDays": 59, "points": 1.25 },
+        { "minDays": 60, "maxDays": 64, "points": 1.5 },
+        { "minDays": 65, "maxDays": 69, "points": 1.75 },
+        { "minDays": 70, "maxDays": 74, "points": 2.0 },
+        { "minDays": 75, "maxDays": 79, "points": 2.25 },
+        { "minDays": 80, "maxDays": 84, "points": 2.5 },
+        { "minDays": 85, "maxDays": 89, "points": 2.75 },
+        { "minDays": 90, "maxDays": 94, "points": 3.0 },
+        { "minDays": 95, "maxDays": 99, "points": 3.25 },
+        { "minDays": 100, "maxDays": 104, "points": 3.5 },
+        { "minDays": 105, "maxDays": 109, "points": 3.75 },
+        { "minDays": 110, "maxDays": 365, "points": 4.0 }
+      ]
+    }
   }
 }

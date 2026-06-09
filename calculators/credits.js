@@ -78,6 +78,23 @@
         }
       }
 
+      // Reserve duty (מילואים)
+      if (data.isReserve && data.reserveDays && cfg.reserveDuty) {
+        const days = parseInt(data.reserveDays, 10) || 0;
+        let points = 0;
+        const brackets = cfg.reserveDuty.brackets || [];
+        for (let i = 0; i < brackets.length; i++) {
+          const b = brackets[i];
+          if (days >= b.minDays && days <= b.maxDays) {
+            points = b.points;
+            break;
+          }
+        }
+        if (points > 0) {
+          add('שירות מילואים (' + days + ' ימים)', points);
+        }
+      }
+
       // NOTE: Qualifying settlement (יישוב מזכה) is NOT a credit point.
       // It is a percentage discount on income tax under Section 11 of the
       // Income Tax Ordinance, handled separately by QualifyingSettlement.apply().
